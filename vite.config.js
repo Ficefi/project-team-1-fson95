@@ -12,5 +12,5 @@ export default defineConfig({
           assets: '/src/assets'
         },
       },
-      base: '/react_vite/',
+      base: '/project-team-1-fson95/',
     });
