@@ -25,7 +25,7 @@
 }
 @media screen and (min-width: 768px) {
   .imgError {
-    min-width: 80%;
+    min-width: 350px;
   }
 }
 
