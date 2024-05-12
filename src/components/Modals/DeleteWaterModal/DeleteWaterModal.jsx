@@ -19,6 +19,7 @@ const DeleteWaterModal = ({ onModalClose, isModalOpen, currentIntakes }) => {
     // Витягує властивість ID з об'єкта currentIntakes.
     // Відправляє дію deleteDrinkThunk з ідентифікатором як аргумент.
     // Викликає функцію onModalClose, щоб закрити модальне вікно.
+
     const data = currentIntakes.id;
 
     dispatch(deleteDrinkThunk(data));
@@ -31,11 +32,11 @@ const DeleteWaterModal = ({ onModalClose, isModalOpen, currentIntakes }) => {
         <ModalContainer onClose={onModalClose}>
           <ModalBox>
             <div>
-              <div className="topline">
-                <h2>Delete water intakes</h2>
+              <div className="popular">
+                <h2>Delete entry</h2>
                 <CloseOutlinedIcon className="close" onClick={onModalClose} />
               </div>
-              <p>Do you really want delete that water intakes?</p>
+              <p>Are you sure you want to delete the entry?</p>
             </div>
             <ButtonContainer>
               <button className="confirm" onClick={handleDelete}>
