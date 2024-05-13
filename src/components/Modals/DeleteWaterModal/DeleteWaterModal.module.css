@@ -1,0 +1,140 @@
+.box {
+  /* position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  transition: opacity 0.3s; */
+  width: 344px;
+  height: 267px;
+  display: inline-flex;
+  padding: 40px 14px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: rgba(50, 63, 71, 1);
+  text-align: center;
+  /* Mobile/H3 */
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.2px;
+}
+
+p {
+  color: #323f47;
+  text-align: center;
+  /* Mobile/Main text */
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;  
+  letter-spacing: -0.14px;
+
+}
+.popular {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.close {  
+  background: var(--Accent, #9BE1A0);
+  cursor: pointer;
+  display: flex;
+  padding: 14px 129px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 30px;
+  
+}
+/* button {
+  display: flex;
+  padding: 14px 129px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 30px;
+  background: var(--Accent, #9BE1A0);
+} */
+
+ close:hover {
+   box-shadow: #0b3c0e
+ }   
+
+
+ close:active {
+   box-shadow: rgb(22, 40, 51);
+ }
+
+ 
+.delete {
+   color: white;
+   background-color: red;
+   padding: 8px 16px;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+   font-weight: bold;
+   transition: background-color 0.3s ease;
+  }
+  
+.delete:hover {
+   background-color: darkred;
+ }
+
+ 
+ .cancel {
+    color: rgba(50, 63, 71, 0.30);
+    text-align: center;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px;     
+    letter-spacing: -0.14px;
+ }
+
+ .button {
+    display: flex;
+    width: 304px;
+    padding: 14px 126px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 30px;
+    background: #F0EFF4;
+ } 
+
+
+@media screen and (min-width: 768px) {
+  .box {
+    width: 516px;
+    height: 244px;   
+    flex-direction: row-reverse;
+    margin: 40px;
+  }
+  .delete {
+    width: 52px;
+    height: 24px;
+    padding: 10px 30px 10px 30px;
+      }
+   .cancel {
+    width: 58px;
+    height: 24px px;
+   }   
+  }
+
+

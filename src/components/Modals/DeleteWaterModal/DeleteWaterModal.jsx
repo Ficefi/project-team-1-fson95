@@ -1,36 +1,25 @@
-import { ButtonContainer, ModalBox } from './DeleteWaterModal.styled';
+import { ButtonContainer, ModalBox } from './DeleteWaterModal.module.css';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
-import ModalContainer from '../ModalContainer/ModalContainer'; //це компонент для рендерингу модального вікна.
-import { useDispatch } from 'react-redux'; //Хук useDispatch используется для получения функции отправки из хранилища Redux.
+import ModalContainer from '../ModalContainer/ModalContainer';
+import { useDispatch } from 'react-redux'; // для отримання функції надсилання зі сховища Redux.
 import { deleteDrinkThunk } from '../../store/water/waterOperations'; //це засіб створення дій, імпортований з ../../store/water/waterOperations.
-
-// Компонент DeleteWaterModal отримує три реквізити:
-// 1) onModalClose: функція, яка буде викликатися,
-//   коли модальне вікно має бути зачиненим.
-// 2) isModalOpen: логічне значення, що вказує,
-//   чи має модальне вікно бути відкритим чи ні.
-// 3) currentIntakes:об'єкт, що представляє поточну
-//   запис про водозабір, що підлягає видаленню.
 
 const DeleteWaterModal = ({ onModalClose, isModalOpen, currentIntakes }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    // Витягує властивість ID з об'єкта currentIntakes.
-    // Відправляє дію deleteDrinkThunk з ідентифікатором як аргумент.
-    // Викликає функцію onModalClose, щоб закрити модальне вікно.
-
+    //Витягує властивість id з об'єкта currentIntakes.
     const data = currentIntakes.id;
 
-    dispatch(deleteDrinkThunk(data));
-    onModalClose();
+    dispatch(deleteDrinkThunk(data)); //Відправляє дію deleteDrinkThunk з ідентифікатором як аргумент.
+    onModalClose(); // закриває вікно
   };
 
   return (
     <>
-      {isModalOpen && (
+      {isModalOpen && ( // що вказує, чи модальне вікно має бути відкритим чи ні.
         <ModalContainer onClose={onModalClose}>
-          <ModalBox>
+          <ModalBox className="box">
             <div>
               <div className="popular">
                 <h2>Delete entry</h2>
@@ -39,7 +28,7 @@ const DeleteWaterModal = ({ onModalClose, isModalOpen, currentIntakes }) => {
               <p>Are you sure you want to delete the entry?</p>
             </div>
             <ButtonContainer>
-              <button className="confirm" onClick={handleDelete}>
+              <button className="delete" onClick={handleDelete}>
                 Delete
               </button>
               <button className="cancel" onClick={onModalClose}>
@@ -55,8 +44,14 @@ const DeleteWaterModal = ({ onModalClose, isModalOpen, currentIntakes }) => {
 
 export default DeleteWaterModal;
 
-// Цей компонент відображає модальне діалогове вікно з повідомленням про підтвердження
-// та двома кнопками: «Видалити» та «Скасувати».
-// При натисканні кнопки "Видалити" він відправляє дію Redux (deleteDrinkThunk) з
-// ідентифікатором поточного запису про паркан води, а потім закриває модальне вікно.
-// Кнопка "Скасувати" просто закриває модальне вікно без виконання будь-якого видалення.
+/*ButtonContainer із двома кнопками:
+Кнопка "Видалити", яка при натисканні викликає функцію handleDelete.
+Кнопка "Скасувати", яка при натисканні викликає функцію onModalClose.*/
+/*Якщо isModalOpen має значення false, нічого не відображається.
+Очікуваний результат: коли компонент DeleteWaterModal візуалізується 
+з isModalOpen, встановленим на true, і currentIntakes, що містить 
+дійсний запис водозабору, відобразиться модальне діалогове вікно із
+ заголовком, повідомленням підтвердження та двома кнопками («Видалити» та «Скасувати»).
+  Натискання кнопки «Видалити» надішле дію deleteDrinkThunk з ідентифікатором 
+  поточного запису водозабору та закриє модальний режим. Натискання кнопки «Скасувати» 
+  або піктограми закриття просто закриє модаль без жодного видалення.*/
