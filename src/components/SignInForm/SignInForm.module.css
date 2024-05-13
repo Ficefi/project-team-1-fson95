@@ -1,0 +1,47 @@
+.signInFields {
+  margin: 32px 0 0 0;
+}
+
+.signInFormInput {
+  display: flex;
+  flex-direction: column;
+  height: 76px;
+  margin-bottom: 16px;
+}
+
+.fieldText {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 18px;
+  letter-spacing: -0.01em;
+}
+
+.inputField {
+  height: 50px;
+  border-radius: 15px;
+  border: 1px solid rgba(47, 47, 47, 0.2);
+  outline: none;
+  padding: 16px;
+  background-color: transparent;
+  margin-top: 8px;
+}
+
+.signInBtn {
+  height: 50px;
+  width: 100%;
+  background-color: #9be1a0;
+  border: transparent;
+  border-radius: 30px;
+  margin-top: 16px;
+  cursor: pointer;
+}
+
+.signInBtn:hover {
+  background-color: #87d28d;
+}
+
+.errMessage {
+  color: #ef5050;
+  font-size: 14px;
+  line-height: 18px;
+}
