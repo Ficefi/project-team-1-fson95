@@ -1,5 +1,9 @@
+import { ErrorForErrorPage } from "../../components/Error/Error"
+
 const ErrorPage = () => {
-  return <div>ERROR!!!</div>;
+  return (
+    <ErrorForErrorPage/>
+  );
 };
 
 export default ErrorPage;
