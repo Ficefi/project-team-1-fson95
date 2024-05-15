@@ -68,7 +68,7 @@ const SignInForm = () => {
         </div>
 
         <button type="submit" className={css.signInBtn}>
-          Sign Up
+          Sign In
         </button>
       </Form>
     </Formik>

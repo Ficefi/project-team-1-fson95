@@ -1,5 +1,6 @@
 import css from './WelcomeSection.module.css';
 import Logo from '../Logo/Logo';
+import { Link } from 'react-router-dom';
 
 const WelcomeSection = () => {
   return (
@@ -8,12 +9,12 @@ const WelcomeSection = () => {
       <h2 className={css.subtitle}>Record daily water intake and track</h2>
       <h1 className={css.title}>Water consumption tracker</h1>
       <div className={css.btnContainer}>
-        <a href="/register" className={css.signUpBtn}>
+        <Link to="/register" className={css.signUpBtn}>
           Try tracker
-        </a>
-        <a href="/login" className={css.signInBtn}>
+        </Link>
+        <Link to="/login" className={css.signInBtn}>
           Sign In
-        </a>
+        </Link>
       </div>
     </div>
   );

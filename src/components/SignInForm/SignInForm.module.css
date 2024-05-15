@@ -9,11 +9,25 @@
   margin-bottom: 16px;
 }
 
+@media (min-width: 768px) {
+  .signInFormInput {
+    height: 88px;
+    margin-bottom: 20px;
+  }
+}
+
 .fieldText {
   font-size: 14px;
   font-weight: bold;
   line-height: 18px;
   letter-spacing: -0.01em;
+}
+
+@media (min-width: 768px) {
+  .fieldText {
+    font-size: 16px;
+    line-height: 24px;
+  }
 }
 
 .inputField {
@@ -26,6 +40,12 @@
   margin-top: 8px;
 }
 
+@media (min-width: 768px) {
+  .inputField {
+    height: 56px;
+  }
+}
+
 .signInBtn {
   height: 50px;
   width: 100%;
@@ -34,6 +54,20 @@
   border-radius: 30px;
   margin-top: 16px;
   cursor: pointer;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.01em;
+  font-weight: bold;
+  color: #323f47;
+}
+
+@media (min-width: 768px) {
+  .signInBtn {
+    height: 60px;
+    margin-top: 12px;
+    font-size: 16px;
+    line-height: 24px;
+  }
 }
 
 .signInBtn:hover {

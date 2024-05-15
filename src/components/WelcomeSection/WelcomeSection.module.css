@@ -99,6 +99,11 @@
   letter-spacing: -0.01em;
 }
 
+.signInBtn:hover {
+  color: #87d28d;
+  border-color: #87d28d;
+}
+
 @media (min-width: 768px) {
   .signInBtn {
     width: 135px;
@@ -124,6 +129,10 @@
   line-height: 18px;
   letter-spacing: -0.01em;
   text-align: center;
+}
+
+.signUpBtn:hover {
+  background-color: #87d28d;
 }
 
 @media (min-width: 768px) {

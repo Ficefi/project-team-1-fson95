@@ -1,11 +1,12 @@
 import css from './Logo.module.css';
+import { Link } from 'react-router-dom';
 
 const Logo = () => {
   return (
     <div className={css.logoContainer}>
-      <a href="/" className={css.logo}>
+      <Link to="/" className={css.logo}>
         AQUATRACK
-      </a>
+      </Link>
     </div>
   );
 };
