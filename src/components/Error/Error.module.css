@@ -40,6 +40,7 @@
   border-radius: 30px;
   text-decoration: none;
   font-weight: 600;
+  font-family: 'Gilroy-Bold', sans-serif;
 }
 .btn:hover {
   background-color: #87d28d;
