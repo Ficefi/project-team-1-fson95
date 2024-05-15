@@ -4,7 +4,7 @@ import sprite from '../../assets/svg/sprite.svg';
 
 const UserBarPopover = ({ toggleUserSetting, toggleLogOut }) => {
   return (
-    <div className={css.popover_container}>
+    <div className={css.popover_container} id="mypopover">
       <div className={css.popover_settings} onClick={toggleUserSetting}>
         <svg className={css.svg_settings} alt="Settings">
           <use href={`${sprite}#icon-settings`}></use>

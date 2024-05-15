@@ -33,6 +33,7 @@ const UserPanel = ({ userName, userAvatarUrl }) => {
   const togglePopover = () => {
     setIsPopoverOpen(!isPopoverOpen);
   };
+
   return (
     <div className={css.user_panel}>
       <div className={css.user_header}>
@@ -42,6 +43,7 @@ const UserPanel = ({ userName, userAvatarUrl }) => {
       <div className={css.popover_container} ref={popoverRef}>
         <div
           className={css.user_button}
+          id="toggleBtn"
           onClick={togglePopover}
           ref={buttonRef}
         >
@@ -60,6 +62,7 @@ const UserPanel = ({ userName, userAvatarUrl }) => {
 
         {isPopoverOpen && (
           <UserBarPopover
+            id="mypopover"
             toggleUserSetting={togglePopover}
             toggleLogOut={togglePopover}
           />
