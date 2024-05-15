@@ -1,0 +1,149 @@
+/* style.module.css */
+
+:root {
+  --background: #f0eff4;
+  --main: #323f47;
+  --main-white: #ffffff;
+  --accent: #9be1a0;
+}
+
+/* Mobile styles */
+
+.main_daily_container {
+  position: relative;
+  padding: 40px 20px;
+  border-radius: 30px;
+  max-width: 343px;
+  background-color: var(--background);
+}
+
+.daily_info_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 903px;
+  height: 30px;
+}
+
+.date,
+.date_wrapper {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--main);
+}
+
+.add_water_container {
+  width: 303px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.add_water_container span {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--main);
+}
+.icon_add_water_btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--accent);
+}
+
+.icon_add_water {
+  width: 30px;
+  height: 30px;
+  stroke-width: 1.5px;
+  stroke: var(--main);
+  cursor: pointer;
+}
+
+.water_list {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+/* scroller */
+.scroller {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: flex;
+  box-sizing: border-box;
+  /* прив'язка відбувається по горизонталі (осі X) */
+  scroll-snap-type: x mandatory;
+  margin-bottom: 40px;
+  width: 640px;
+}
+
+/* .scroller scrollbar, */
+.scroller::-webkit-scrollbar {
+  border-radius: 9px;
+  width: 8px;
+  background-color: var(--main-white);
+}
+.scroller::-webkit-scrollbar-thumb {
+  border-radius: 9px;
+  width: 235px;
+  height: 8px;
+  background-color: var(--main);
+}
+
+.scroller > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+  cursor: pointer;
+}
+
+/* mobile: верстка гумова від 320 px до 375 px; */
+@media only screen and (min-width: 320px) and (max-width: 375px) {
+  .main_daily_container {
+    width: 100%;
+  }
+  .daily_info_container {
+    max-width: 100%;
+  }
+}
+/* стає адаптивною з 375 px;*/
+@media only screen and (min-width: 376px) and (max-width: 768px) {
+  .main_daily_container {
+    max-width: 100%;
+  }
+  .scroller {
+    width: 100%;
+  }
+  .daily_info_container {
+    width: 100%;
+  }
+}
+
+/* Tablet styles*/
+@media only screen and (min-width: 769px) and (max-width: 1440px) {
+  .main_daily_container {
+    width: 100%;
+    max-width: 704px;
+    height: 738px;
+  }
+  .daily_info_container {
+    width: 100%;
+    max-width: 640px;
+  }
+}
+
+/* Desktop styles */
+@media only screen and (min-width: 1441px) {
+  .main_daily_container {
+    width: 100%;
+    max-width: 672px;
+    height: 736px;
+  }
+}
