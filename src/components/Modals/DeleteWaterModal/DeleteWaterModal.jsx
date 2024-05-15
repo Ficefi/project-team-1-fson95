@@ -1,57 +1,53 @@
-import { ButtonContainer, ModalBox } from './DeleteWaterModal.module.css';
-import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
-import ModalContainer from '../ModalContainer/ModalContainer';
-import { useDispatch } from 'react-redux'; // для отримання функції надсилання зі сховища Redux.
-import { deleteDrinkThunk } from '../../store/water/waterOperations'; //це засіб створення дій, імпортований з ../../store/water/waterOperations.
+import ComponentIsModal from '../Modal/Modal'; //модальниq компонент для повторного використання.
 
-const DeleteWaterModal = ({ onModalClose, isModalOpen, currentIntakes }) => {
-  const dispatch = useDispatch();
+import IconX from '../../image/sprite.svg'; //використовується для кнопки закриття.
 
+import css from './DeleteWaterModal.module.css';
+
+/*Обробники подій:функція використовується для обробки логіки
+  видалення та закриття модального.*/
+
+export const DeleteWaterModal = ({ isOpen, isClose }) => {
   const handleDelete = () => {
-    //Витягує властивість id з об'єкта currentIntakes.
-    const data = currentIntakes.id;
-
-    dispatch(deleteDrinkThunk(data)); //Відправляє дію deleteDrinkThunk з ідентифікатором як аргумент.
-    onModalClose(); // закриває вікно
+    isClose();
   };
 
   return (
     <>
-      {isModalOpen && ( // що вказує, чи модальне вікно має бути відкритим чи ні.
-        <ModalContainer onClose={onModalClose}>
-          <ModalBox className="box">
-            <div>
-              <div className="popular">
-                <h2>Delete entry</h2>
-                <CloseOutlinedIcon className="close" onClick={onModalClose} />
-              </div>
-              <p>Are you sure you want to delete the entry?</p>
-            </div>
-            <ButtonContainer>
-              <button className="delete" onClick={handleDelete}>
-                Delete
-              </button>
-              <button className="cancel" onClick={onModalClose}>
-                Cancel
-              </button>
-            </ButtonContainer>
-          </ModalBox>
-        </ModalContainer>
-      )}
+      <ComponentIsModal isOpen={isOpen} isClose={isClose}>
+        <div className={css.modalContent}>
+          <button className={css.closeButton} onClick={isClose}>
+            <svg className={css.iconClose}>
+              <use href={`${IconX}#IconX`}></use>
+            </svg>
+          </button>
+          <h2 className={css.modalHead}>Delete entry</h2>
+          <p className={css.modalInquiry}>
+            Are you sure you want to delete the entry?
+          </p>
+          <div className={css.buttonContainer}>
+            <button className={css.deleteButton} onClick={handleDelete}>
+              Delete
+            </button>
+            <button className={css.cancelButton} onClick={isClose}>
+              Cancel
+            </button>
+          </div>
+        </div>
+      </ComponentIsModal>
     </>
   );
 };
 
-export default DeleteWaterModal;
-
-/*ButtonContainer із двома кнопками:
-Кнопка "Видалити", яка при натисканні викликає функцію handleDelete.
-Кнопка "Скасувати", яка при натисканні викликає функцію onModalClose.*/
-/*Якщо isModalOpen має значення false, нічого не відображається.
-Очікуваний результат: коли компонент DeleteWaterModal візуалізується 
-з isModalOpen, встановленим на true, і currentIntakes, що містить 
-дійсний запис водозабору, відобразиться модальне діалогове вікно із
- заголовком, повідомленням підтвердження та двома кнопками («Видалити» та «Скасувати»).
-  Натискання кнопки «Видалити» надішле дію deleteDrinkThunk з ідентифікатором 
-  поточного запису водозабору та закриє модальний режим. Натискання кнопки «Скасувати» 
-  або піктограми закриття просто закриє модаль без жодного видалення.*/
+/*
+Компонент рендерить компонент ComponentIsModa<wbr>l, передаючи йому властивості isOpen і isClose.
+Всередині ComponentIsModa<wbr>l відображається div з класом modalContent, який містить модальний вміст.
+Кнопка закриття відображається за допомогою класу closeButton, який відображає піктограму SVG з
+ імпорту IconX. Коли клацнути, викликається функція isClose, щоб закрити модаль.
+Заголовок із класом modalHead відображає текст «Видалити запис».
+Абзац із класом modalInquiry відображає запитання «Ви впевнені, що хочете видалити запис?».
+Div із класом buttonContainer<wbr> містить дві кнопки:
+Кнопка «Видалити» з класом deleteButton, яка викликає функцію handleDelete при натисканні.
+Кнопка «Скасувати» з класом cancelButton, яка викликає функцію isClose, коли натискається.
+Таким чином, цей компонент відображає модальне діалогове вікно з кнопкою закриття, заголовком,
+ запитанням для підтвердження та двома кнопками («Видалити» та «Скасувати»). Кнопка «Видалити», ймовірно, запускає логіку видалення, а кнопка «Скасувати» та кнопка закриття відхиляють модаль. Компонент отримує властивості для керування видимістю модального елемента та функцію для його закриття.*/
