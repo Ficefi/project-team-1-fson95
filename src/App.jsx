@@ -1,17 +1,17 @@
 import { Route, Routes } from 'react-router-dom';
-import SharedLayout from './components/SharedLayout/SharedLayout';
+import { lazy } from 'react';
 import { LoaderPage } from './components/Loader/Loader';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshUser } from './redux/auth/operations';
 import { useAuth } from './hooks';
+import SharedLayout from './components/SharedLayout/SharedLayout';
 
-const HomePage = lazy(() => import('./pages/HomePage'));
-const ErrorPage = lazy(() => import('./pages/ErrorPage'));
-const SignInPage = lazy(() => import( './pages/SignInPage/SignInPage'));
-const SignUpPage = lazy(() => import( './pages/SignUpPage/SignUpPage '));
-const TrackerPage = lazy(() => import( './pages/TrackerPage/TrackerPage'));
-
+const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
+const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
+const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage'));
+const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage '));
+const TrackerPage = lazy(() => import('./pages/TrackerPage/TrackerPage'));
 
 const App = () => {
   const dispatch = useDispatch();

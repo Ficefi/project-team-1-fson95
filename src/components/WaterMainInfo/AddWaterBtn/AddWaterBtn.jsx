@@ -4,7 +4,7 @@ import { FiPlus } from 'react-icons/fi';
 function AddWaterBtn() {
   return (
     <div className={css.addWaterBtnContainer}>
-      <button type="button">
+      <button className={css.addWater_btn} type="button">
         <FiPlus />
         Add water
       </button>

@@ -1,4 +1,4 @@
-button {
+.addWater_btn {
   border-radius: 30px;
   padding: 14px 20px;
   width: 140px;
@@ -20,18 +20,18 @@ button {
   align-items: center;
 }
 
-button > svg {
+.addWater_btn > svg {
   width: 16px;
   height: 16px;
 }
 
 @media (min-width: 375px) {
-  button {
+  .addWater_btn {
     margin-left: 171px;
   }
 }
 @media (min-width: 768px) {
-  button {
+  .addWater_btn {
     margin-left: 462px;
     margin-top: 26px;
     width: 178px;
@@ -41,14 +41,14 @@ button > svg {
     font-size: 16px;
     padding: 18px 30px;
   }
-  button > svg {
+  .addWater_btn > svg {
     width: 24px;
     height: 24px;
   }
 }
 
 @media (min-width: 1440px) {
-  button {
+  .addWater_btn {
     margin-left: 398px;
   }
 }
