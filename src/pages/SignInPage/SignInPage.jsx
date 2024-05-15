@@ -25,7 +25,3 @@ const SignInPage = () => {
 };
 
 export default SignInPage;
-
-<Link to="/register" className={css.signUpBtn}>
-  Try tracker
-</Link>;

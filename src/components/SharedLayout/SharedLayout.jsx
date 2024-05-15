@@ -1,6 +1,5 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import MonthInfo from '../MonthInfo/MonthInfo';
 
 const SharedLayout = () => {
   return (
@@ -8,7 +7,6 @@ const SharedLayout = () => {
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
-      <MonthInfo />
     </>
   );
 };

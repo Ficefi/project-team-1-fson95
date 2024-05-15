@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {
   format,
   startOfWeek,
@@ -8,11 +8,11 @@ import {
   endOfWeek,
   isSameMonth,
   subMonths,
-  addMonths
-} from "date-fns";
-import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
-import s from "./MonthInfo.module.css"
-import sprite from "./sprite.svg"
+  addMonths,
+} from 'date-fns';
+import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
+import css from './MonthInfo.module.css';
+import sprite from '../../assets/svg/sprite.svg';
 
 const MonthInfo = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -27,37 +27,38 @@ const MonthInfo = () => {
             setSelectedDate(new Date());
             setActiveDate(new Date());
           }}
-        >
-        </div>
-        <h2 className="currentMonth">{format(activeDate, "MMMM yyyy")}</h2>
+        ></div>
+        <h2 className="currentMonth">{format(activeDate, 'MMMM yyyy')}</h2>
       </div>
     );
   };
 
-const generateDatesForCurrentWeek = (date, selectedDate, activeDate) => {
-  let currentDate = date;
-  const week = [];
-  for (let day = 0; day < 7; day++) {
-    const cloneDate = currentDate;
-    if (isSameMonth(currentDate, activeDate)) {
-      week.push(
-       <div>
-        <button
-          className={s.btnday}
-          onClick={() => {
-            setSelectedDate(cloneDate);
-          }}
-        >
-          {isSameMonth(currentDate, activeDate) ? format(currentDate, "d") : ""}
-        </button>
-        <p className={s.completed}>100%</p>
-        </div>
-      );
-    } 
-    currentDate = addDays(currentDate, 1);
-  }
-  return <>{week}</>;
-};
+  const generateDatesForCurrentWeek = (date, selectedDate, activeDate) => {
+    let currentDate = date;
+    const week = [];
+    for (let day = 0; day < 7; day++) {
+      const cloneDate = currentDate;
+      if (isSameMonth(currentDate, activeDate)) {
+        week.push(
+          <div>
+            <button
+              className={css.btnday}
+              onClick={() => {
+                setSelectedDate(cloneDate);
+              }}
+            >
+              {isSameMonth(currentDate, activeDate)
+                ? format(currentDate, 'd')
+                : ''}
+            </button>
+            <p className={css.completed}>100%</p>
+          </div>
+        );
+      }
+      currentDate = addDays(currentDate, 1);
+    }
+    return <>{week}</>;
+  };
 
   const getDates = () => {
     const startOfTheSelectedMonth = startOfMonth(activeDate);
@@ -76,40 +77,39 @@ const generateDatesForCurrentWeek = (date, selectedDate, activeDate) => {
       currentDate = addDays(currentDate, 7);
     }
 
-    return (<>
-      <div>
-    <div className={s.weekContainer}>{allWeeks}</div>
-    </div>
-    </>);
+    return (
+      <>
+        <div>
+          <div className={css.weekContainer}>{allWeeks}</div>
+        </div>
+      </>
+    );
   };
-console.log(sprite)
   return (
-    <section className={s.section}>
-      <div className={s.block}>
-      <div className={s.container}>
-        <div className={s.blockinfomonth}>
-      <h2 className={s.monthtitle}>Month</h2>
-      <div className={s.changermonth}>
-      <AiOutlineLeft
-          className="navIcon"
-          onClick={() => setActiveDate(subMonths(activeDate, 1))}
-        />
-              <span className={s.monthname}>{getHeader()}</span>
-        <AiOutlineRight
-          className="navIcon"
-          onClick={() => setActiveDate(addMonths(activeDate, 1))}
-        />
+    <section className={css.section}>
+      <div className={css.block}>
+        <div className={css.container}>
+          <div className={css.blockinfomonth}>
+            <h2 className={css.monthtitle}>Month</h2>
+            <div className={css.changermonth}>
+              <AiOutlineLeft
+                className="navIcon"
+                onClick={() => setActiveDate(subMonths(activeDate, 1))}
+              />
+              <span className={css.monthname}>{getHeader()}</span>
+              <AiOutlineRight
+                className="navIcon"
+                onClick={() => setActiveDate(addMonths(activeDate, 1))}
+              />
+            </div>
+          </div>
+          <div className={css.icon}>
+            <svg className={css.svg}>
+              <use href={sprite + '#icon-pie-chart-02'}></use>
+            </svg>
+          </div>
         </div>
-        </div>
-        <div className={s.icon}>
-        <svg className={s.svg}>
-        <use href={sprite + "#icon-pie-chart-02"}></use>
-        </svg>
-        </div>
-        </div>
-        <div className={s.blockdays}>
-      {getDates()}
-      </div>
+        <div className={css.blockdays}>{getDates()}</div>
       </div>
     </section>
   );

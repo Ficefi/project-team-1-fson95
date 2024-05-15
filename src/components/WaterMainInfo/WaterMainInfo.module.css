@@ -8,15 +8,6 @@
   padding: 24px 16px 32px 16px;
 }
 
-.waterMainInfoTitle {
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 1.11111;
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
-  color: var(--main);
-  margin: 0;
-}
 @media (min-width: 375px) {
   .waterMainInfoContainer {
     width: 343px;
