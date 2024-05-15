@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin: 16px 0;
+  justify-content: center;
+}
+
+/* @media (min-height: 812px) {
+  .container {
+    margin: auto 0;
+  }
+} */
+
+@media (min-width: 768px) {
+  .container {
+    margin: 32px 0;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    gap: 32px;
+    flex-direction: unset;
+    margin: unset;
+    height: 100vh;
+  }
+}
