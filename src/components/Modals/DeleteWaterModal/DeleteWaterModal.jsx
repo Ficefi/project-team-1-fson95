@@ -1,13 +1,10 @@
-import ComponentIsModal from '../Modal/Modal'; //модальниq компонент для повторного використання.
+import ComponentIsModal from '../ComponentIsModal/ComponentIsModal';
 
-import IconX from '../../image/sprite.svg'; //використовується для кнопки закриття.
-
+import WaterForm from '../WaterForm/WaterForm';
+import IconX from '../../image/sprite.svg';
 import css from './DeleteWaterModal.module.css';
 
-/*Обробники подій:функція використовується для обробки логіки
-  видалення та закриття модального.*/
-
-export const DeleteWaterModal = ({ isOpen, isClose }) => {
+export const DeleteWaterModal = ({ isOpen, isClose, onSubmit }) => {
   const handleDelete = () => {
     isClose();
   };
@@ -33,6 +30,7 @@ export const DeleteWaterModal = ({ isOpen, isClose }) => {
               Cancel
             </button>
           </div>
+          <WaterForm onSubmit={onSubmit} />
         </div>
       </ComponentIsModal>
     </>
