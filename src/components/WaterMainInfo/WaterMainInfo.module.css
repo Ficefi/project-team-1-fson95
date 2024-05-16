@@ -1,0 +1,38 @@
+.waterMainInfoContainer {
+  background-color: var(--light_green);
+  border-radius: 30px;
+  width: 100%;
+  background-image: url('/public/bottle.png');
+  background-position: center 50px;
+  background-repeat: no-repeat;
+  padding: 24px 16px 32px 16px;
+}
+
+@media (min-width: 375px) {
+  .waterMainInfoContainer {
+    width: 343px;
+    height: 415px;
+    background-position: 41px 50px;
+  }
+}
+@media (min-width: 768px) {
+  .waterMainInfoContainer {
+    width: 704px;
+    height: 578px;
+    background-position: center 37px;
+    padding: 32px 32px 64px 32px;
+    background-image: url('/public/tablet_bottle.png');
+  }
+
+  .waterMainInfoTitle {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .waterMainInfoContainer {
+    width: 672px;
+    height: 736px;
+    padding: 32px 32px 64px 64px;
+  }
+}
