@@ -1,4 +1,6 @@
 import css from './SignUpForm.module.css';
+import { useDispatch } from 'react-redux';
+import { signUp } from '../../redux/auth/operations';
 import { useId } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -21,15 +23,20 @@ const initialValues = {
 };
 
 const SignUpForm = () => {
+  const dispatch = useDispatch();
+
   const emailFieldId = useId();
   const passwordFieldId = useId();
   const repeatPasswordFieldId = useId();
 
   const handleSubmit = (values, actions) => {
-    //
-    //
-    //
-    console.log(values);
+    actions.resetForm();
+    dispatch(
+      signUp({
+        email: values.email,
+        password: values.password,
+      })
+    );
     actions.resetForm();
   };
 
