@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+axios.defaults.baseURL = 'https://aquatrack-api.onrender.com';
 
 // Utility to add JWT
 const setAuthHeader = (token) => {
@@ -17,11 +17,11 @@ const clearAuthHeader = () => {
  * POST @ /users/signup
  * body: { email, password }
  */
-export const signup = createAsyncThunk(
+export const signUp = createAsyncThunk(
   'auth/signup',
   async (credentials, thunkAPI) => {
     try {
-      const res = await axios.post('/users/signup', credentials);
+      const res = await axios.post('/users/register', credentials);
       // After successful registration, add the token to the HTTP header
       setAuthHeader(res.data.token);
       return res.data;
@@ -35,11 +35,11 @@ export const signup = createAsyncThunk(
  * POST @ /users/signin
  * body: { email, password }
  */
-export const signin = createAsyncThunk(
+export const signIn = createAsyncThunk(
   'auth/signin',
   async (credentials, thunkAPI) => {
     try {
-      const res = await axios.post('/users/signin', credentials);
+      const res = await axios.post('/users/login', credentials);
       // After successful login, add the token to the HTTP header
       setAuthHeader(res.data.token);
       return res.data;
