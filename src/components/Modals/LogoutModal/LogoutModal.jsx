@@ -1,37 +1,27 @@
-// import React from 'react';
-import ComponentWithModal from '../Modal/Modal';
-import IconX from '../../image/sprite.svg';
-import css from './LogOutModal.module.css';
-import { signout } from '../../redux/auth/operations.js';
 import { useDispatch } from 'react-redux';
+import { logOut } from '../../../redux/auth/operations';
+import CustomModal from '../CustomModal/CustomModal';
+import css from './LogOutModal.module.css';
 
-export const LogOutModal = ({ isOpen, isClose }) => {
+const LogOutModal = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
 
-  const logOut = () => dispatch(signout());
   return (
     <>
-      <ComponentWithModal isOpen={isOpen} isClose={isClose}>
-        <div className={css.modalOverlay}>
-          <div className={css.modalContent}>
-            <button className={css.closeButton} onClick={isClose}>
-              <svg className={css.iconClose}>
-                <use href={`${IconX}#IconX`}></use>
-              </svg>
-            </button>
-            <h2 className={css.modalTitle}>Log out</h2>
-            <p className={css.modalQuestion}>Do you really want to leave?</p>
-            <div className={css.buttonContainer}>
-              <button className={css.deleteButton} onClick={logOut}>
-                Log out
-              </button>
-              <button className={css.cancelButton} onClick={isClose}>
-                Cancel
-              </button>
-            </div>
-          </div>
+      <CustomModal isOpen={isOpen} onClose={onClose}>
+        <h4 className={css.out_header}>Log out</h4>
+        <p className={css.out_text}>Do you really want to leave?</p>
+        <div className={css.btn_container}>
+          <button className={css.out_button} onClick={() => dispatch(logOut())}>
+            Log out
+          </button>
+          <button className={css.out_button} onClick={onClose}>
+            Cancel
+          </button>
         </div>
-      </ComponentWithModal>
+      </CustomModal>
     </>
   );
 };
+
+export default LogOutModal;
