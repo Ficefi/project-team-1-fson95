@@ -8,7 +8,6 @@ import { useAuth } from './hooks';
 import { RestrictedRoute } from './components/RestrictedRoute';
 import { PrivateRoute } from './components/PrivateRoute';
 import SharedLayout from './components/SharedLayout/SharedLayout';
-import TestPage from './pages/TestPage/TestPage';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
