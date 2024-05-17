@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { refreshUser } from './redux/auth/operations';
 import { useAuth } from './hooks';
 import SharedLayout from './components/SharedLayout/SharedLayout';
+import TestPage from './pages/TestPage/TestPage';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/register" element={<SignUpPage />} />
         <Route path="/login" element={<SignInPage />} />
         <Route path="/tracker" element={<TrackerPage />} />
+        <Route path="/test" element={<TestPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Route>
     </Routes>
