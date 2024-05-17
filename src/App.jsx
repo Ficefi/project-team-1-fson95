@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshUser } from './redux/auth/operations';
 import { useAuth } from './hooks';
+import { RestrictedRoute } from './components/RestrictedRoute';
+import { PrivateRoute } from './components/PrivateRoute';
 import SharedLayout from './components/SharedLayout/SharedLayout';
 import TestPage from './pages/TestPage/TestPage';
 
@@ -28,10 +30,24 @@ const App = () => {
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<HomePage />} />
-        <Route path="/register" element={<SignUpPage />} />
-        <Route path="/login" element={<SignInPage />} />
-        <Route path="/tracker" element={<TrackerPage />} />
-        <Route path="/test" element={<TestPage />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute redirectTo="/tracker" component={<SignUpPage />} />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/tracker" component={<SignInPage />} />
+          }
+        />
+        <Route
+          path="/tracker"
+          element={
+            <PrivateRoute redirectTo="/login" component={<TrackerPage />} />
+          }
+        />
         <Route path="*" element={<ErrorPage />} />
       </Route>
     </Routes>
