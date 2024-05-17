@@ -1,41 +1,35 @@
-import ComponentIsModal from '../ComponentIsModal/ComponentIsModal';
-
-import WaterForm from '../WaterForm/WaterForm';
-import IconX from '../../image/sprite.svg';
+import { useDispatch } from 'react-redux';
+import { deleteWater } from '../../../redux/water/operations';
+import CustomModal from '../CustomModal/CustomModal';
 import css from './DeleteWaterModal.module.css';
 
-export const DeleteWaterModal = ({ isOpen, isClose, onSubmit }) => {
-  const handleDelete = () => {
-    isClose();
-  };
+const DeleteWaterModal = ({ isOpen, onClose, id }) => {
+  const dispatch = useDispatch();
 
   return (
     <>
-      <ComponentIsModal isOpen={isOpen} isClose={isClose}>
-        <div className={css.modalContent}>
-          <button className={css.closeButton} onClick={isClose}>
-            <svg className={css.iconClose}>
-              <use href={`${IconX}#IconX`}></use>
-            </svg>
+      <CustomModal isOpen={isOpen} onClose={onClose}>
+        <h4 className={css.delete_header}>Delete entry</h4>
+        <p className={css.delete_text}>
+          Are you sure you want to delete the entry?
+        </p>
+        <div className={css.btn_container}>
+          <button
+            className={css.delete_button}
+            onClick={() => dispatch(deleteWater(id))}
+          >
+            Delete
           </button>
-          <h2 className={css.modalHead}>Delete entry</h2>
-          <p className={css.modalInquiry}>
-            Are you sure you want to delete the entry?
-          </p>
-          <div className={css.buttonContainer}>
-            <button className={css.deleteButton} onClick={handleDelete}>
-              Delete
-            </button>
-            <button className={css.cancelButton} onClick={isClose}>
-              Cancel
-            </button>
-          </div>
-          <WaterForm onSubmit={onSubmit} />
+          <button className={css.delete_button} onClick={onClose}>
+            Cancel
+          </button>
         </div>
-      </ComponentIsModal>
+      </CustomModal>
     </>
   );
 };
+
+export default DeleteWaterModal;
 
 /*
 Компонент рендерить компонент ComponentIsModa<wbr>l, передаючи йому властивості isOpen і isClose.
