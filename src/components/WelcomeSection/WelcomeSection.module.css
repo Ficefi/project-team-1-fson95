@@ -1,0 +1,146 @@
+.container {
+  width: 343px;
+  height: 411px;
+  padding: 0 16px;
+  border-radius: 30px;
+  background-color: #e6e6e8;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 704px;
+    height: 498px;
+    padding: 0 32px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    width: 672px;
+    height: 736px;
+  }
+}
+
+.subtitle {
+  margin: 74px 0 0 0;
+  font-size: 14px;
+  font-weight: normal;
+  color: #2f2f2f;
+  line-height: 18px;
+  letter-spacing: 0.06em;
+}
+
+@media (min-width: 768px) {
+  .subtitle {
+    font-size: 16px;
+    line-height: 24px;
+    margin: 50px 0 0 32px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .subtitle {
+    margin: 132px 0 0 32px;
+  }
+}
+
+.title {
+  margin: 16px 0 0 0;
+  font-size: 38px;
+  color: #323f47;
+  font-weight: bold;
+  line-height: 38px;
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 768px) {
+  .title {
+    width: 547px;
+    margin: 16px 0 0 32px;
+    font-size: 64px;
+    line-height: 70px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .title {
+    font-size: 80px;
+    line-height: 76px;
+  }
+}
+
+/*  */
+
+.btnContainer {
+  margin: 32px 0 0 0;
+  display: flex;
+  gap: 10px;
+}
+
+@media (min-width: 768px) {
+  .btnContainer {
+    margin: 32px 0 0 32px;
+    gap: 16px;
+  }
+}
+
+.signInBtn {
+  display: block;
+  width: 104px;
+  height: 46px;
+  padding: 14px 28px;
+  border: 1px solid #323f47;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  color: #323f47;
+  line-height: 18px;
+  letter-spacing: -0.01em;
+}
+
+.signInBtn:hover {
+  color: #87d28d;
+  border-color: #87d28d;
+}
+
+@media (min-width: 768px) {
+  .signInBtn {
+    width: 135px;
+    height: 60px;
+    padding: 18px 40px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+.signUpBtn {
+  display: block;
+  width: 116px;
+  height: 46px;
+  padding: 14px 19px;
+  border: transparent;
+  background-color: #9be1a0;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  color: #323f47;
+  line-height: 18px;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+.signUpBtn:hover {
+  background-color: #87d28d;
+}
+
+@media (min-width: 768px) {
+  .signUpBtn {
+    width: 169px;
+    height: 60px;
+    padding: 18px 40px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}

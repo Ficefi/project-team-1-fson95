@@ -1,0 +1,12 @@
+.tracker_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 1440px) {
+  .tracker_container {
+    gap: 32px;
+    height: 100vh;
+  }
+}

@@ -1,0 +1,40 @@
+
+.box_title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start
+    }
+    
+    .title {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--main);
+    margin-block-end: 24px;
+    }
+    
+    .subtitle {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.33333;
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: var(--main);
+    margin-block-end: 20px;
+    }
+    
+    @media only screen and (min-width: 768px) {
+        .modalBox {
+            padding: 40px;
+            max-width: 518px;
+        }
+    
+        .title {
+            font-size: 28px;
+        }
+    
+        .subtitle {
+            font-size: 18px;
+        }
+    }
