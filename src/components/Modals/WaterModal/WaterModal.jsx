@@ -25,5 +25,4 @@ export const WaterModal = ({ typeOperation, isOpen, onClose, onSubmit }) => {
     </>
   );
 };
-
 export default WaterModal;

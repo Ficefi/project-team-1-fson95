@@ -14,8 +14,8 @@ import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import css from './MonthInfo.module.css';
 import sprite from '../../assets/svg/sprite.svg';
 
-const MonthInfo = () => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
+const MonthInfo = ({ selectedDate, updateSelectedDate }) => {
+  // const [selectedDate, setSelectedDate] = useState(new Date());
   const [activeDate, setActiveDate] = useState(new Date());
 
   const getHeader = () => {
@@ -24,7 +24,8 @@ const MonthInfo = () => {
         <div
           className="todayButton"
           onClick={() => {
-            setSelectedDate(new Date());
+            // setSelectedDate(new Date());
+            updateSelectedDate(new Date());
             setActiveDate(new Date());
           }}
         ></div>
@@ -44,7 +45,8 @@ const MonthInfo = () => {
             <button
               className={css.btnday}
               onClick={() => {
-                setSelectedDate(cloneDate);
+                // setSelectedDate(cloneDate);
+                updateSelectedDate(cloneDate);
               }}
             >
               {isSameMonth(currentDate, activeDate)

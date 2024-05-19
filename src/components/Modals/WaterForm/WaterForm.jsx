@@ -1,41 +1,47 @@
+import { useDispatch } from 'react-redux';
+import { useForm } from 'react-hook-form';
+import * as Yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+
 import css from './WaterForm.module.css';
 import { BiMinus } from 'react-icons/bi';
 import { AiOutlinePlus } from 'react-icons/ai';
-import { useState } from 'react';
-import * as Yup from 'yup';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { addWater } from '../../../redux/dailyInfoRedux/waterOperation';
 
 const waterSchema = Yup.object().shape({
-  waterMl: Yup.number()
+  consumedVolume: Yup.number()
     .required('Required')
     .positive('Water amount must be positive'),
+  time: Yup.string().required(),
 });
 
 const WaterForm = () => {
-  const { handleSubmit } = useForm({
+  const dispatch = useDispatch();
+
+  const { handleSubmit, setValue, register, watch } = useForm({
     resolver: yupResolver(waterSchema),
+    defaultValues: {
+      consumedVolume: 50,
+      time: new Date().getHours(),
+    },
   });
-
-  const [waterSetValue, setWaterSetValue] = useState(50);
-
+  const consumedVolume = watch('consumedVolume');
   const plusWater = () => {
-    setWaterSetValue((someValue) => someValue + 50);
+    setValue('consumedVolume', consumedVolume + 50);
   };
-
   const minusWater = () => {
-    if (waterSetValue > 0) {
-      setWaterSetValue((someValue) => someValue - 50);
-    }
+    const newValue = consumedVolume - 50;
+    setValue('consumedVolume', newValue < 0 ? 0 : newValue);
   };
-
-  const inputValueChange = (evt) => {
-    const { value } = evt.target;
-    setWaterSetValue(parseInt(value) || 0);
+  const onSubmit = (data) => {
+    dispatch(addWater(data));
   };
-
   return (
-    <form className={css.form} onSubmit={handleSubmit()} autoComplete="off">
+    <form
+      className={css.form}
+      onSubmit={handleSubmit(onSubmit, (e) => console.log(e))}
+      autoComplete="off"
+    >
       <div className={css.box_amount}>
         <p className={css.box_amount_text}>Amount of water:</p>
         <div className={css.box_button}>
@@ -46,7 +52,7 @@ const WaterForm = () => {
           >
             <BiMinus size="19" />
           </button>
-          <p className={css.box_button_text}>{waterSetValue} ml</p>
+          <p className={css.box_button_text}>{consumedVolume} ml</p>
           <button
             type="button"
             onClick={plusWater}
@@ -64,7 +70,7 @@ const WaterForm = () => {
           type="time"
           className={css.input_time}
           id="appt"
-          name="appt"
+          {...register('time')}
           min="09:00"
           max="18:00"
           required
@@ -76,13 +82,11 @@ const WaterForm = () => {
         </label>
         <input
           type="number"
-          name="waterMl"
           step="50"
           min="0"
-          value={waterSetValue}
+          {...register('consumedVolume')}
           className={css.input}
           autoFocus
-          onChange={inputValueChange}
         />
       </div>
       <button type="submit" className={css.btn}>
