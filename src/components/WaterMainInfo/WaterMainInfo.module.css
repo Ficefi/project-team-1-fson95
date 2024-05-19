@@ -19,7 +19,7 @@
   .waterMainInfoContainer {
     width: 704px;
     height: 578px;
-    background-position: center 37px;
+    background-position: center 69px;
     padding: 32px 32px 64px 32px;
     background-image: url('/public/tablet_bottle.png');
   }
@@ -33,6 +33,8 @@
   .waterMainInfoContainer {
     width: 672px;
     height: 736px;
-    padding: 32px 32px 64px 64px;
+    padding: 32px 32px 64px 32px;
+    background-position: center 92px;
+    background-image: url('/public/desktop_bottle.png');
   }
 }

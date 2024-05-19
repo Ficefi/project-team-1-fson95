@@ -89,3 +89,5 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
+
+export const getPersistedToken = (state) => state.auth.token;

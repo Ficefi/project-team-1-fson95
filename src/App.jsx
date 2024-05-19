@@ -6,7 +6,6 @@ import { useEffect } from 'react';
 import { refreshUser } from './redux/auth/operations';
 import { useAuth } from './hooks';
 import SharedLayout from './components/SharedLayout/SharedLayout';
-
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage'));
