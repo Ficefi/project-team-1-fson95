@@ -1,6 +1,6 @@
 import ContentLoader from 'react-content-loader';
 
-const LoaderPage = (props) => (
+export const LoaderPage = (props) => (
   <ContentLoader
     viewBox="0 0 400 160"
     height={160}
@@ -20,5 +20,3 @@ LoaderPage.metadata = {
   description: 'Three Dots',
   filename: 'ThreeDots',
 };
-
-export default LoaderPage;
