@@ -6,22 +6,18 @@ import {
   startOfMonth,
   endOfMonth,
   endOfWeek,
+  isSameDay,
   isSameMonth,
   subMonths,
   addMonths,
-<<<<<<< Updated upstream:src/components/MonthInfo/MonthInfo.jsx
 } from 'date-fns';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import css from './MonthInfo.module.css';
 import sprite from '../../assets/svg/sprite.svg';
-=======
-  isSameDay,
-} from 'date-fns';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import css from './MonthInfo.module.css';
 import sprite from '../../../assets/svg/sprite.svg';
 import clsx from 'clsx';
->>>>>>> Stashed changes:src/components/WaterDetailedInfo/MonthInfo/MonthInfo.jsx
 
 const MonthInfo = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -51,13 +47,9 @@ const MonthInfo = () => {
         week.push(
           <div>
             <button
-<<<<<<< Updated upstream:src/components/MonthInfo/MonthInfo.jsx
-              className={css.btnday}
-=======
               className={clsx(css.btnday, {
                 [css.selectedDate]: isSameDay(currentDate, selectedDate),
               })}
->>>>>>> Stashed changes:src/components/WaterDetailedInfo/MonthInfo/MonthInfo.jsx
               onClick={() => {
                 setSelectedDate(cloneDate);
               }}
