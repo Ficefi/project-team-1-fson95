@@ -26,6 +26,7 @@ button > svg {
 }
 
 @media (min-width: 375px) {
+<<<<<<< Updated upstream
   button {
     margin-left: 171px;
   }
@@ -33,6 +34,12 @@ button > svg {
 @media (min-width: 768px) {
   button {
     margin-left: 462px;
+=======
+
+}
+@media (min-width: 768px) {
+  .addWater_btn {
+>>>>>>> Stashed changes
     margin-top: 26px;
     width: 178px;
     height: 60px;
@@ -48,7 +55,13 @@ button > svg {
 }
 
 @media (min-width: 1440px) {
+<<<<<<< Updated upstream
   button {
     margin-left: 398px;
   }
+=======
+  .addWater_btn {
+      margin-top: 56px;
+    }
+>>>>>>> Stashed changes
 }

@@ -10,13 +10,19 @@
 
 @media (min-width: 375px) {
   .waterMainInfoContainer {
+<<<<<<< Updated upstream
     width: 343px;
+=======
+>>>>>>> Stashed changes
     background-position: 41px 50px;
   }
 }
 @media (min-width: 768px) {
   .waterMainInfoContainer {
+<<<<<<< Updated upstream
     width: 704px;
+=======
+>>>>>>> Stashed changes
     background-position: center 37px;
     padding: 32px 32px 64px 32px;
     background-image: url('/public/tablet_bottle.png');
@@ -30,6 +36,10 @@
 @media (min-width: 1440px) {
   .waterMainInfoContainer {
     width: 672px;
+<<<<<<< Updated upstream
     padding: 32px 32px 64px 64px;
+=======
+    max-height: 736px;
+>>>>>>> Stashed changes
   }
 }

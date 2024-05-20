@@ -82,9 +82,7 @@
 }
 
 @media (min-width: 375px) {
-  .waterProgressBarContainer {
-    margin-left: 57px;
-  }
+
 }
 @media (min-width: 768px) {
   .waterProgressBarContainer {
@@ -124,6 +122,7 @@
   .waterProgressBarContainer {
     width: 295px;
     height: 106px;
-    margin-left: 124px;
+    margin-top: 215px;
+    margin-left: 156px;
   }
 }

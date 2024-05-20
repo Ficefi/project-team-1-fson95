@@ -1,18 +1,14 @@
-.logoContainer {
-  margin: 24px 0 0 0;
-}
-
-@media (min-width: 768px) {
-  .logoContainer {
-    margin: 32px 0 0 0;
-  }
-}
-
 .logo {
   text-decoration: none;
-  color: #323f47;
+  color: var(--main);
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 700;
   line-height: 20px;
   letter-spacing: -0.01em;
+}
+
+@media (min-width: 1440px) {
+  .logo {
+    font-size: 24px;
+  }
 }

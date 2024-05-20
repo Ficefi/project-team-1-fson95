@@ -2,8 +2,6 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 375px;
-   padding: 20px;
    margin: auto;
 }
 
@@ -103,9 +101,6 @@ margin: 6px 3px;
 }
 
 @media (min-width: 768px) {
-    .section {
-        width: 768px;
-    }
     .blockinfomonth {
         gap: 343px;
     }
@@ -148,9 +143,6 @@ line-height: 114%;
 }
 
 @media (min-width: 1440px) {
-    .section {
-        width: 728px;
-    }
     .blockinfomonth {
         gap: 310px;
     }
