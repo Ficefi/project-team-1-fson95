@@ -13,6 +13,7 @@
   .signUpFormInput {
     height: 88px;
     margin-bottom: 20px;
+    position: relative;
   }
 }
 
@@ -43,6 +44,30 @@
 @media (min-width: 768px) {
   .inputField {
     height: 56px;
+    padding: 16px 52px 16px 16px;
+  }
+}
+
+.eyeIcon {
+  fill: transparent;
+  stroke: #2f2f2f;
+}
+
+.togglePasswordBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  display: none;
+  padding: 0 0 0 0;
+}
+
+@media (min-width: 768px) {
+  .togglePasswordBtn {
+    position: absolute;
+    top: 57%;
+    right: 16px;
+    display: unset;
   }
 }
 

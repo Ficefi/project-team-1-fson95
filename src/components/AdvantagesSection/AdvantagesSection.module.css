@@ -3,25 +3,49 @@
   height: 353px;
   border-radius: 30px;
   padding: 0 16px;
-  background-image: url(../../assets/AdvantagesSection/Photo_mobile.png);
+  background-image: url(../../assets/images/Baner/Baner@1x_mobile.webp);
   background-size: cover;
 }
 
-@media (min-width: 768px) {
+@media screen and (min-resolution: 192dpi) {
+  .container {
+    background-image: url(../../assets/images/Baner/Baner@2x_mobile.webp);
+  }
+}
+
+@media screen and (min-width: 768px) {
   .container {
     width: 704px;
     height: 446px;
     padding: 0 32px;
-    background-image: url(../../assets/AdvantagesSection/Photo_tablet.png);
+    background-image: url(../../assets/images/Baner/Baner@1x_tablet.webp);
   }
 }
 
-@media (min-width: 1440px) {
+@media screen and (min-width: 768px) and (min-resolution: 192dpi) {
+  .container {
+    width: 704px;
+    height: 446px;
+    padding: 0 32px;
+    background-image: url(../../assets/images/Baner/Baner_2x_tablet.webp);
+  }
+}
+
+@media screen and (min-width: 1440px) {
   .container {
     width: 672px;
     height: 736px;
     padding: 0 32px;
-    background-image: url(../../assets/AdvantagesSection/Photo_desktop.png);
+    background-image: url(../../assets/images/Baner/Baner@1x_desktop.webp);
+  }
+}
+
+@media screen and (min-width: 1440px) and (min-resolution: 192dpi) {
+  .container {
+    width: 672px;
+    height: 736px;
+    padding: 0 32px;
+    background-image: url(../../assets/images/Baner/Baner_2x_desktop.webp);
   }
 }
 

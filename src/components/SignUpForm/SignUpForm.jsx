@@ -1,7 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { signUp } from '../../redux/auth/operations';
-import { useId } from 'react';
+import { useId, useState } from 'react';
 import { useForm } from 'react-hook-form';
+
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import css from './SignUpForm.module.css';
@@ -22,6 +23,8 @@ const initialValues = {
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const emailFieldId = useId();
   const passwordFieldId = useId();
@@ -49,6 +52,10 @@ const SignUpForm = () => {
     console.log(values);
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={css.signUpFields}>
       <div className={css.signUpFormInput}>
@@ -73,7 +80,7 @@ const SignUpForm = () => {
           Password
         </label>
         <input
-          type="password"
+          type={showPassword ? 'text' : 'password'}
           id={passwordFieldId}
           placeholder="Enter your password"
           className={`${css.inputField} ${
@@ -81,6 +88,16 @@ const SignUpForm = () => {
           }`}
           {...register('password')}
         />
+        <button
+          type="button"
+          className={css.togglePasswordBtn}
+          onClick={togglePasswordVisibility}
+        >
+          <svg className={css.eyeIcon} width="20" height="20">
+            <use href="/src/assets/svg/sprite.svg#icon-eye-off"></use>
+          </svg>
+        </button>
+
         {errors.password && (
           <span className={css.errMessage}>{errors.password.message}</span>
         )}
@@ -90,7 +107,7 @@ const SignUpForm = () => {
           Repeat password
         </label>
         <input
-          type="password"
+          type={showPassword ? 'text' : 'password'}
           id={repeatPasswordFieldId}
           placeholder="Repeat password"
           className={`${css.inputField} ${
@@ -98,6 +115,15 @@ const SignUpForm = () => {
           }`}
           {...register('repeatPassword')}
         />
+        <button
+          type="button"
+          className={css.togglePasswordBtn}
+          onClick={togglePasswordVisibility}
+        >
+          <svg className={css.eyeIcon} width="20" height="20">
+            <use href="/src/assets/svg/sprite.svg#icon-eye-off"></use>
+          </svg>
+        </button>
         {errors.repeatPassword && (
           <span className={css.errMessage}>
             {errors.repeatPassword.message}

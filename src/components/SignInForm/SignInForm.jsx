@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { signIn } from '../../redux/auth/operations';
-import { useId } from 'react';
+import { useId, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
@@ -18,6 +18,8 @@ const initialValues = {
 
 const SignInForm = () => {
   const dispatch = useDispatch();
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const emailFieldId = useId();
   const passwordFieldId = useId();
@@ -41,6 +43,10 @@ const SignInForm = () => {
       })
     );
     reset();
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -67,7 +73,7 @@ const SignInForm = () => {
           Password
         </label>
         <input
-          type="password"
+          type={showPassword ? 'text' : 'password'}
           id={passwordFieldId}
           placeholder="Enter your password"
           className={`${css.inputField} ${
@@ -75,6 +81,15 @@ const SignInForm = () => {
           }`}
           {...register('password')}
         />
+        <button
+          type="button"
+          className={css.togglePasswordBtn}
+          onClick={togglePasswordVisibility}
+        >
+          <svg className={css.eyeIcon} width="20" height="20">
+            <use href="/src/assets/svg/sprite.svg#icon-eye-off"></use>
+          </svg>
+        </button>
         {errors.password && (
           <span className={css.errMessage}>{errors.password.message}</span>
         )}
