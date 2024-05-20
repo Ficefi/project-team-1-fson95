@@ -1,13 +1,3 @@
-.logoContainer {
-  margin: 24px 0 0 0;
-}
-
-@media (min-width: 768px) {
-  .logoContainer {
-    margin: 32px 0 0 0;
-  }
-}
-
 .logo {
   text-decoration: none;
   color: #323f47;
