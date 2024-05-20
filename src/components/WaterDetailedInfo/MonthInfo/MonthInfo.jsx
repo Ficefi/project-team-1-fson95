@@ -6,10 +6,10 @@ import {
   startOfMonth,
   endOfMonth,
   endOfWeek,
+  isSameDay,
   isSameMonth,
   subMonths,
   addMonths,
-  isSameDay
 } from 'date-fns';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import css from './MonthInfo.module.css';
@@ -46,7 +46,7 @@ const MonthInfo = () => {
           <div key={cloneDate.toString()}>
             <button
               className={clsx(css.btnday, {
-                [css.selectedDate]: isSameDay(currentDate, selectedDate)
+                [css.selectedDate]: isSameDay(currentDate, selectedDate),
               })}
               onClick={() => {
                 setSelectedDate(cloneDate);
@@ -64,7 +64,7 @@ const MonthInfo = () => {
     }
     return <React.Fragment key={currentDate}>{week}</React.Fragment>;
   };
-  
+
   const getDates = () => {
     const startOfTheSelectedMonth = startOfMonth(activeDate);
     const endOfTheSelectedMonth = endOfMonth(activeDate);
