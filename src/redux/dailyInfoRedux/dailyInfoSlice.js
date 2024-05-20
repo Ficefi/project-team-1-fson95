@@ -1,25 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  userName: '',
-  userAvatarUrl: '',
   isPopoverOpen: false,
   isSettingsModalOpen: false,
   isLogOutModalOpen: false,
   isWaterModalOpen: false,
   waterRecords: [],
+  selectedDate: new Date().toISOString(),
 };
 
 const dailyInfoSlice = createSlice({
   name: 'dailyInfo',
   initialState,
   reducers: {
-    setUserName(state, action) {
-      state.userName = action.payload;
-    },
-    setUserAvatarUrl(state, action) {
-      state.userAvatarUrl = action.payload;
-    },
     togglePopover(state) {
       state.isPopoverOpen = !state.isPopoverOpen;
     },
@@ -52,12 +45,14 @@ const dailyInfoSlice = createSlice({
     toggleWaterModal(state) {
       state.isWaterModalOpen = !state.isWaterModalOpen;
     },
+    setSelectedDate(state, action) {
+      // дія для встановлення обраної дати
+      state.selectedDate = action.payload;
+    },
   },
 });
 
 export const {
-  setUserName,
-  setUserAvatarUrl,
   togglePopover,
   closePopover,
   setPopoverDimensions,
@@ -68,9 +63,13 @@ export const {
   addWaterItem,
   deleteWaterItem,
   toggleWaterModal,
+  setSelectedDate,
 } = dailyInfoSlice.actions;
 
 export const selectIsWaterModalOpen = (state) =>
   state.dailyInfo.isWaterModalOpen;
+
+//селектор для обраної дати
+export const selectSelectedDate = (state) => state.dailyInfo.selectedDate;
 
 export default dailyInfoSlice.reducer;

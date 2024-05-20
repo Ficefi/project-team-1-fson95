@@ -13,6 +13,7 @@ import storage from 'redux-persist/lib/storage';
 import { usersReducer } from './water/slice';
 import { authReducer } from './auth/slice';
 import dailyInfoSlice from './dailyInfoRedux/dailyInfoSlice';
+import { userSlice } from './dailyInfoRedux/userSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -25,6 +26,7 @@ export const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     userWater: usersReducer,
     dailyInfo: dailyInfoSlice,
+    [userSlice.reducerPath]: userSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

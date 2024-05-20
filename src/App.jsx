@@ -8,6 +8,7 @@ import { useAuth } from './hooks';
 import { RestrictedRoute } from './components/RestrictedRoute';
 import { PrivateRoute } from './components/PrivateRoute';
 import SharedLayout from './components/SharedLayout/SharedLayout';
+import { userSlice } from './redux/dailyInfoRedux/userSlice';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
@@ -17,12 +18,17 @@ const TrackerPage = lazy(() => import('./pages/TrackerPage/TrackerPage'));
 
 const App = () => {
   const dispatch = useDispatch();
-  const { isRefreshing } = useAuth();
+  const { isRefreshing, isLoggedIn } = useAuth();
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      dispatch(userSlice.actions.get());
+    }
+  }, [dispatch, isLoggedIn]);
   return isRefreshing ? (
     <LoaderPage />
   ) : (

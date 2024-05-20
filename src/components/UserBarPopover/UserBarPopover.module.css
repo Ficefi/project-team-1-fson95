@@ -9,10 +9,10 @@
   align-items: flex-start;
   position: absolute;
   gap: 8px;
-  top: 100%;
   margin-top: 4px;
   left: 0;
-  z-index: 999;
+  top: 0;
+  z-index: 2;
 
   box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
   background: var(--main-white);

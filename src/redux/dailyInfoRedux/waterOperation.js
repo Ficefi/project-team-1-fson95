@@ -48,7 +48,17 @@ export const deleteWater = createAsyncThunk(
     }
   }
 );
-
+// export const fetchUserAvatar = createAsyncThunk(
+//   'user/fetchUserAvatar',
+//   async (_, { rejectWithValue }) => {
+//     try {
+//       const response = await axios.get('/avatar');
+//       return response.data.avatarURL;
+//     } catch (error) {
+//       return rejectWithValue(error.response.data);
+//     }
+//   }
+// );
 // export const fetchWaterByMonth = createAsyncThunk(
 //   'water/fetchWaterByMonth',
 //   async ({ year, month }, { rejectWithValue }) => {
