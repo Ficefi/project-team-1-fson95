@@ -45,9 +45,7 @@ const WaterForm = () => {
       amountWater: data.amountWater,
       time: data.time,
     };
-    console.log('Submit data:', newData);
     const res = dispatch(addWater(newData));
-    console.log('Result:', res);
     toast.success('Added, cool!');
   };
 
