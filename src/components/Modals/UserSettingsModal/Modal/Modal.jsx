@@ -1,50 +1,37 @@
 import Modal from 'react-modal';
+import css from './Modal.module.css';
 
 const modalWrapper = (WrappedComponent) => {
   return function ModalWrapper(props) {
     Modal.setAppElement('#root');
-    const customStyles = {
+
+    const customStyles1 = {
       overlay: {
-        backgroundColor: 'rgba(0, 0, 0, 0.1)',
+        background: 'rgba(22, 22, 22, 0.8)',
         zIndex: '1000',
       },
       content: {
-        top: 'auto', // Встановлюємо автоматичну висоту зверху
+        top: 'auto',
         left: '50%',
         right: 'auto',
-        bottom: '0', // Модальне вікно відображається знизу
+        bottom: '0',
         transform: 'translateX(-50%)',
         padding: '0px',
-        borderRadius: '20px 20px 0 0', // Радіус тільки зверху
+        borderRadius: '20px 20px 0 0',
         backgroundColor: 'white',
-        maxHeight: '80vh',
+        maxHeight: '90vh',
         overflowY: 'auto',
         scrollbarWidth: 'thin',
-        scrollbarColor: 'transparent transparent',
-        '&::-webkit-scrollbar': {
-          width: '8px',
-        },
-        '&::-webkit-scrollbar-thumb': {
-          backgroundColor: '#888', // Сірий колір покажчика скролбара
-          borderRadius: '8px',
-          border: 'none',
-        },
-        '&::-webkit-scrollbar-track': {
-          backgroundColor: 'transparent',
-        },
-        '&::-webkit-scrollbar-corner': {
-          backgroundColor: 'transparent',
-        },
       },
     };
 
     return (
-      <div>
+      <div className={css.customScrollContainer}>
         <WrappedComponent />
         <Modal
           isOpen={props.isOpen}
           onRequestClose={props.isClose}
-          style={customStyles}
+          style={customStyles1}
           shouldCloseOnOverlayClick={true}
           shouldCloseOnEsc={true}
           contentLabel="modalWrapper"
