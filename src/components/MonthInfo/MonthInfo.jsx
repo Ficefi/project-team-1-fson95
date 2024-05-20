@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {
   format,
   startOfWeek,
@@ -9,13 +9,15 @@ import {
   isSameMonth,
   subMonths,
   addMonths,
+  isSameDay
 } from 'date-fns';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import css from './MonthInfo.module.css';
 import sprite from '../../assets/svg/sprite.svg';
+import clsx from 'clsx';
 
 const MonthInfo = () => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(null);
   const [activeDate, setActiveDate] = useState(new Date());
 
   const getHeader = () => {
@@ -36,13 +38,16 @@ const MonthInfo = () => {
   const generateDatesForCurrentWeek = (date, selectedDate, activeDate) => {
     let currentDate = date;
     const week = [];
+
     for (let day = 0; day < 7; day++) {
       const cloneDate = currentDate;
       if (isSameMonth(currentDate, activeDate)) {
         week.push(
-          <div>
+          <div key={cloneDate.toString()}>
             <button
-              className={css.btnday}
+              className={clsx(css.btnday, {
+                [css.selectedDate]: isSameDay(currentDate, selectedDate)
+              })}
               onClick={() => {
                 setSelectedDate(cloneDate);
               }}
@@ -57,9 +62,9 @@ const MonthInfo = () => {
       }
       currentDate = addDays(currentDate, 1);
     }
-    return <>{week}</>;
+    return <React.Fragment key={currentDate}>{week}</React.Fragment>;
   };
-
+  
   const getDates = () => {
     const startOfTheSelectedMonth = startOfMonth(activeDate);
     const endOfTheSelectedMonth = endOfMonth(activeDate);
@@ -67,7 +72,6 @@ const MonthInfo = () => {
     const endDate = endOfWeek(endOfTheSelectedMonth);
 
     let currentDate = startDate;
-
     const allWeeks = [];
 
     while (currentDate <= endDate) {
@@ -80,11 +84,14 @@ const MonthInfo = () => {
     return (
       <>
         <div>
-          <div className={css.weekContainer}>{allWeeks}</div>
+          <div key={allWeeks.toString()} className={css.weekContainer}>
+            {allWeeks}
+          </div>
         </div>
       </>
     );
   };
+
   return (
     <section className={css.section}>
       <div className={css.block}>
