@@ -71,7 +71,7 @@ color: var(--main);
     padding: 5px 11px;
     width: 28px;
     height: 28px;
-    background: rgba(50, 63, 71, 0.2);
+    background: white;
         border: transparent;
         font-family: var(--font-family);
 font-weight: 700;
@@ -100,6 +100,15 @@ margin: 6px 3px;
 .svg {
     width: 20px;
     height: 20px;
+}
+
+.selectedDate {
+font-weight: 700;
+font-size: 16px;
+line-height: 150%;
+letter-spacing: -0.01em;
+color: #9BE1A0 !important;
+background: var(--main) !important;
 }
 
 @media (min-width: 768px) {
