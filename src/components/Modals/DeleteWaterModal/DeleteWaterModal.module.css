@@ -16,7 +16,7 @@
   color: var(--main);
 }
 
-.btn_container {
+.btn_container { 
   display: flex;
   justify-content: center;
   gap: 8px;
@@ -35,8 +35,3 @@
   color: var(--main);
   cursor: pointer;
 }
-
-
-
-
-
