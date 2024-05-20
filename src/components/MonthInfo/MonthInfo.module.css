@@ -3,8 +3,8 @@
     justify-content: center;
     flex-direction: column;
     width: 375px;
-   padding: 20px;
-   margin: auto;
+    padding: 20px;
+    margin: auto;
 }
 
 .block {
@@ -27,7 +27,7 @@
 
 .blockinfomonth {
     display: flex;
-    gap: 58px; 
+    gap: 58px;
     align-items: center;
 }
 
@@ -37,22 +37,22 @@
 }
 
 .monthtitle {
-font-weight: 700;
-font-size: 20px;
-line-height: 120%;
-letter-spacing: -0.01em;
-color: var(--main);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: -0.01em;
+    color: var(--main);
 }
 
 .monthname {
     font-family: var(--font-family);
-font-style: italic;
-font-weight: 700;
-font-size: 12px;
-line-height: 129%;
-letter-spacing: -0.01em;
-text-align: center;
-color: var(--main);
+    font-style: italic;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 129%;
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: var(--main);
 }
 
 .weekContainer {
@@ -72,22 +72,22 @@ color: var(--main);
     width: 28px;
     height: 28px;
     background: rgba(50, 63, 71, 0.2);
-        border: transparent;
-        font-family: var(--font-family);
-font-weight: 700;
-font-size: 14px;
-line-height: 129%;
-letter-spacing: -0.01em;
-color: var(--main);
+    border: transparent;
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 129%;
+    letter-spacing: -0.01em;
+    color: var(--main);
 }
 
 .completed {
     font-family: var(--font-family);
-font-weight: 400;
-font-size: 10px;
-line-height: 100%;
-color: rgba(47, 47, 47, 0.6);
-margin: 6px 3px;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 100%;
+    color: rgba(47, 47, 47, 0.6);
+    margin: 6px 3px;
 }
 
 .icon {
@@ -106,41 +106,50 @@ margin: 6px 3px;
     .section {
         width: 768px;
     }
+
     .blockinfomonth {
         gap: 343px;
     }
+
     .btnday {
-padding: 7px 15px;
-width: 38px;
-height: 38px;
-font-size: 16px;
-line-height: 150%;
+        padding: 7px 15px;
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
+        line-height: 150%;
     }
+
     .weekContainer {
         column-gap: 48px;
-    row-gap: 15px;
+        row-gap: 15px;
     }
+
     .completed {
-font-size: 12px;
-line-height: 187%;
-color: rgba(47, 47, 47, 0.6);
-margin: 6px 4px;
+        font-size: 12px;
+        line-height: 187%;
+        color: rgba(47, 47, 47, 0.6);
+        margin: 6px 4px;
     }
+
     .monthname {
         font-style: normal;
-font-size: 14px;
-line-height: 150%;
+        font-size: 14px;
+        line-height: 150%;
     }
+
     .changermonth {
         gap: 20px;
     }
+
     .monthtitle {
-font-size: 28px;
-line-height: 114%;
+        font-size: 28px;
+        line-height: 114%;
     }
+
     .icon {
         margin-left: 20px
     }
+
     .svg {
         width: 24px;
         height: 24px;
@@ -151,11 +160,13 @@ line-height: 114%;
     .section {
         width: 728px;
     }
+
     .blockinfomonth {
         gap: 310px;
     }
+
     .weekContainer {
         column-gap: 43px;
-    row-gap: 15px;
+        row-gap: 15px;
     }
 }
