@@ -79,3 +79,11 @@
   font-size: 14px;
   line-height: 18px;
 }
+
+.inputFieldError {
+  border: 1px solid #ef5050;
+}
+
+.inputFieldRepeatPasswordError {
+  border: 1px solid #ef5050;
+}
