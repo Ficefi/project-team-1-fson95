@@ -49,7 +49,6 @@ const SignUpForm = () => {
       })
     );
     reset();
-    console.log(values);
   };
 
   const togglePasswordVisibility = () => {
@@ -94,7 +93,11 @@ const SignUpForm = () => {
           onClick={togglePasswordVisibility}
         >
           <svg className={css.eyeIcon} width="20" height="20">
-            <use href="/src/assets/svg/sprite.svg#icon-eye-off"></use>
+            <use
+              href={`/src/assets/svg/sprite.svg#${
+                showPassword ? 'icon-eye' : 'icon-eye-off'
+              }`}
+            ></use>
           </svg>
         </button>
 
@@ -121,7 +124,11 @@ const SignUpForm = () => {
           onClick={togglePasswordVisibility}
         >
           <svg className={css.eyeIcon} width="20" height="20">
-            <use href="/src/assets/svg/sprite.svg#icon-eye-off"></use>
+            <use
+              href={`/src/assets/svg/sprite.svg#${
+                showPassword ? 'icon-eye' : 'icon-eye-off'
+              }`}
+            ></use>
           </svg>
         </button>
         {errors.repeatPassword && (

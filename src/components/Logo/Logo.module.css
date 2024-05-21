@@ -1,3 +1,7 @@
+.logoContainer {
+  font-family: 'Poppins-Bold', sans-serif;
+}
+
 .logo {
   text-decoration: none;
   color: var(--main);
