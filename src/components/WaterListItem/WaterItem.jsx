@@ -1,22 +1,38 @@
 import css from './WaterListItem.module.css';
 import sprite from '../../assets/svg/sprite.svg';
-import { useDispatch } from 'react-redux';
-import { toggleWaterModal } from '../../redux/dailyInfoRedux/dailyInfoSlice';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux'; // Додано імпорт
+import DeleteWaterModal from '../Modals/DeleteWaterModal/DeleteWaterModal';
+import WaterModal from '../../components/Modals/WaterModal/WaterModal';
+import { updateWater } from '../../redux/dailyInfoRedux/waterOperation';
 
 export default function WaterItem({ id, dose, date, onDelete }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); // Отримання диспетчера Redux
+
   const hours = date.getHours();
   const minutes = date.getMinutes();
   const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes
     .toString()
     .padStart(2, '0')}`;
 
-  const handleEdit = () => {
-    dispatch(toggleWaterModal());
+  // open modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalType, setModalType] = useState(null);
+
+  const openModal = (type) => {
+    setIsModalOpen(true);
+    setModalType(type);
   };
 
-  const handleDelete = () => {
-    onDelete(id);
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalType(null);
+  };
+
+  const handleEditSubmit = (formData) => {
+    dispatch(updateWater(formData)); // Виклик updateWater з використанням диспетчера
+
+    closeModal();
   };
 
   return (
@@ -29,13 +45,34 @@ export default function WaterItem({ id, dose, date, onDelete }) {
         <div className={css.date}>{formattedTime}</div>
       </div>
       <div className={css.btn}>
-        <svg className={css.edit_icon} onClick={handleEdit}>
+        <svg className={css.edit_icon} onClick={() => openModal('editWater')}>
           <use href={`${sprite}#icon-edit`}></use>
         </svg>
-        <svg className={css.trash_icon} onClick={handleDelete}>
+        <svg
+          className={css.trash_icon}
+          onClick={() => openModal('deleteWater')}
+        >
           <use href={`${sprite}#icon-trash`}></use>
         </svg>
       </div>
+      {isModalOpen && modalType === 'editWater' && (
+        <WaterModal
+          typeOperation="editWater"
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          onSubmit={handleEditSubmit}
+        />
+      )}
+      {isModalOpen && modalType === 'deleteWater' && (
+        <DeleteWaterModal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          onDelete={() => {
+            onDelete(id);
+            closeModal();
+          }}
+        />
+      )}
     </div>
   );
 }

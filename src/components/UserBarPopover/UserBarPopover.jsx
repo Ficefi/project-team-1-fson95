@@ -3,17 +3,12 @@ import css from './UserBarPopover.module.css';
 import sprite from '../../assets/svg/sprite.svg';
 import { createPortal } from 'react-dom';
 import { useEffect, useRef, useState } from 'react';
-import {
-  toggleLogOutModal,
-  toggleSettingsModal,
-} from '../../redux/dailyInfoRedux/dailyInfoSlice';
-import { useDispatch } from 'react-redux';
-
+import UserSettingsModal from '../Modals/UserSettingsModal/UserSettingsModal.jsx';
+import LogOutModal from '../Modals/LogOutModal/LogOutModal.jsx';
 //1 - знайти місцеположення кнопки and react on viewport size change
 //2 - змістити поповер на потрібне місце
 // 3 - клік поза межами поповера або кнопки - закрити
 // 4 - стилізувати
-
 const UserBarPopover = ({ buttonRef, isOpened, toggle }) => {
   const [dimensions, setDimensions] = useState(null);
   useEffect(() => {
@@ -31,9 +26,7 @@ const UserBarPopover = ({ buttonRef, isOpened, toggle }) => {
       setDimensions(buttonRef.current.getBoundingClientRect());
     };
     window.addEventListener('resize', cb);
-    console.log('add window resize handler');
     return () => {
-      console.log('remove window resize handler');
       window.removeEventListener('resize', cb);
     };
   }, [buttonRef, isOpened]);
@@ -55,46 +48,69 @@ const UserBarPopover = ({ buttonRef, isOpened, toggle }) => {
       toggle();
     }
     document.addEventListener('mousedown', handleClick);
-    console.log('add click outside handler');
     return () => {
-      console.log('remove click outside handler');
       document.removeEventListener('mousedown', handleClick);
     };
   }, [buttonRef, toggle, isOpened]);
 
   const { left = 0, bottom = 0 } = dimensions ?? {};
-  const dispatch = useDispatch();
+
+  //open modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalType, setModalType] = useState(null);
+
+  const openModal = (type) => {
+    setIsModalOpen(true);
+    setModalType(type);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalType(null);
+  };
+
   return (
-    isOpened &&
-    createPortal(
-      <div
-        className={css.popover_container}
-        style={{
-          transform: `translate(${left}px, ${bottom}px)`,
-        }}
-        ref={popoverRef}
-      >
-        <div
-          className={css.popover_settings}
-          onClick={() => dispatch(toggleSettingsModal())}
-        >
-          <svg className={css.svg_settings} alt="Settings">
-            <use href={`${sprite}#icon-settings`}></use>
-          </svg>
-          Setting
-        </div>
-        <div
-          className={css.popover_log_out}
-          onClick={() => dispatch(toggleLogOutModal())}
-        >
-          <svg className={css.svg_logout} alt="Log Out">
-            <use href={`${sprite}#icon-log-out`}></use>
-          </svg>
-          Log out
-        </div>
-      </div>,
-      document.body
+    isOpened && (
+      <>
+        {createPortal(
+          <div
+            className={css.popover_container}
+            style={{
+              transform: `translate(${left}px, ${bottom}px)`,
+            }}
+            ref={popoverRef}
+          >
+            <div
+              onClick={() => openModal('setting')}
+              className={css.popover_settings}
+            >
+              <svg className={css.svg_settings} alt="Settings">
+                <use href={`${sprite}#icon-settings`}></use>
+              </svg>
+              Setting
+            </div>
+            <div
+              onClick={() => openModal('logout')}
+              className={css.popover_log_out}
+            >
+              <svg className={css.svg_logout} alt="Log Out">
+                <use href={`${sprite}#icon-log-out`}></use>
+              </svg>
+              Log out
+            </div>
+          </div>,
+          document.body
+        )}
+
+        {isModalOpen && modalType === 'setting' && (
+          <UserSettingsModal onClose={closeModal} />
+        )}
+        {isModalOpen && modalType === 'logout' && (
+          <LogOutModal onClose={closeModal} />
+        )}
+      </>
     )
   );
 };
+
 export default UserBarPopover;

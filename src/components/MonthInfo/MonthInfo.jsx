@@ -41,7 +41,8 @@ const MonthInfo = ({ selectedDate, updateSelectedDate }) => {
       const cloneDate = currentDate;
       if (isSameMonth(currentDate, activeDate)) {
         week.push(
-          <div>
+          //add key
+          <div key={currentDate.toISOString()}>
             <button
               className={css.btnday}
               onClick={() => {

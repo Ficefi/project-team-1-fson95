@@ -17,7 +17,7 @@ const DailyInfo = () => {
   const selectedDate = useSelector((state) => state.dailyInfo.selectedDate);
   //user
   const userName = useSelector(userSlice.selectors.name);
-  const userAvatarUrl = useSelector(userSlice.selectors.avatar);
+  const avatarUrl = useSelector(userSlice.selectors.avatar);
   const handleClick = (date) => {
     dispatch(fetchWaterByDay({ date }));
   };
@@ -31,7 +31,7 @@ const DailyInfo = () => {
   return (
     <div className={css.main_daily_container}>
       <div className={css.user_container}>
-        <UserPanel userName={userName} userAvatarUrl={userAvatarUrl} />
+        <UserPanel userName={userName} userAvatarUrl={avatarUrl} />
       </div>
 
       <div className={css.daily_info_container}>

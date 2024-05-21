@@ -1,5 +1,3 @@
-//відповідає за обробку дій/actions, які змінюють стан/state у redux store
-
 import { createSlice } from '@reduxjs/toolkit';
 import {
   addWater,
@@ -32,39 +30,38 @@ const waterSlice = createSlice({
       .addCase(fetchWaterByDay.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.dailyConsumption = action.payload;
+        state.waterRecords = action.payload;
       })
       .addCase(fetchWaterByDay.rejected, handleRejected)
 
-      //addWater
+      // addWater
       .addCase(addWater.pending, handlePending)
       .addCase(addWater.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.waterRecords.concat(action.payload);
+        state.waterRecords.push(action.payload);
       })
       .addCase(addWater.rejected, handleRejected)
 
-      //updateWater
+      // updateWater
       .addCase(updateWater.pending, handlePending)
       .addCase(updateWater.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.waterRecords = state.waterRecords.map((record) => {
-          //перевірка чи співпадає id record._id з id оновленого запису action.payload._id
-          record._id === action.payload._id ? action.payload : record;
-        });
+        state.waterRecords = state.waterRecords.map((record) =>
+          record._id === action.payload._id ? action.payload : record
+        );
       })
       .addCase(updateWater.rejected, handleRejected)
 
-      //deleteWater
+      // deleteWater
       .addCase(deleteWater.pending, handlePending)
       .addCase(deleteWater.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.waterRecords = state.waterRecords.filter((record) => {
-          record._id !== action.payload._id;
-        });
+        state.waterRecords = state.waterRecords.filter(
+          (record) => record._id !== action.payload._id
+        );
       })
       .addCase(deleteWater.rejected, handleRejected);
   },
