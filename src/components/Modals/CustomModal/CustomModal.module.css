@@ -11,6 +11,7 @@
 
 .closedModal {
 position: absolute;
+cursor: pointer;
 top: 20px;
 right: 20px;
 color: var(--main-text);

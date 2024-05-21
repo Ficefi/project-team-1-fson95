@@ -115,6 +115,7 @@ color: var(--main-text);
 
 .btn {
     border-radius: 30px;
+    cursor: pointer;
 padding: 18px 50px;
 width: 141px;
 height: 60px;
