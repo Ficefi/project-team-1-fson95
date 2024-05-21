@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
-import { addWater } from '../../../redux/userWater/operations';
+import { addWater, updateWater } from '../../../redux/userWater/operations';
 import toast from 'react-hot-toast';
 
 const waterSchema = Yup.object().shape({
@@ -16,11 +16,12 @@ const waterSchema = Yup.object().shape({
   time: Yup.string().required('Required'),
 });
 
-const WaterForm = () => {
+const WaterForm = ({ typeOperation, defaultValues, onClose }) => {
   const dispatch = useDispatch();
 
   const { register, handleSubmit } = useForm({
     resolver: yupResolver(waterSchema),
+    defaultValues,
   });
 
   const [waterSetValue, setWaterSetValue] = useState(50);
@@ -40,15 +41,20 @@ const WaterForm = () => {
     setWaterSetValue(parseInt(value) || 0);
   };
 
-  const submit = (data) => {
+  const submit = async (data) => {
     const newData = {
       amountWater: data.amountWater,
       time: data.time,
     };
-    console.log('Submit data:', newData);
-    const res = dispatch(addWater(newData));
-    console.log('Result:', res);
-    toast.success('Added, cool!');
+
+    if (typeOperation === 'addWater') {
+      await dispatch(addWater(newData));
+      toast.success('Added, cool!');
+    } else {
+      await dispatch(updateWater({ _id: defaultValues._id, ...newData }));
+      toast.success('Updated, cool!');
+    }
+    onClose();
   };
 
   return (
