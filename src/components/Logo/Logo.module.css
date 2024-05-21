@@ -1,0 +1,14 @@
+.logo {
+  text-decoration: none;
+  color: var(--main);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 1440px) {
+  .logo {
+    font-size: 24px;
+  }
+}

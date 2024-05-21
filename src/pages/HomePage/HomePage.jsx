@@ -1,10 +1,13 @@
-import DailyInfo from '../../components/DailyInfo/DailyInfo';
+import css from './HomePage.module.css';
+import WelcomeSection from '../../components/WelcomeSection/WelcomeSection';
+import AdvantagesSection from '../../components/AdvantagesSection/AdvantagesSection';
+
 const HomePage = () => {
   return (
-    <>
-      <div>HELLO to our site!</div>
-      <DailyInfo />
-    </>
+    <div className={css.container}>
+      <WelcomeSection />
+      <AdvantagesSection />
+    </div>
   );
 };
 

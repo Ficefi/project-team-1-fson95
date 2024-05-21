@@ -2,6 +2,8 @@ import Modal from 'react-modal';
 import { AiOutlineClose } from 'react-icons/ai';
 import css from './CustomModal.module.css';
 
+Modal.setAppElement('#root');
+
 const customStyles = {
   content: {
     height: 'auto',

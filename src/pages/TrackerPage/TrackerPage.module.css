@@ -1,0 +1,18 @@
+.tracker_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+@media only screen and (min-width: 1440px) {
+  .tracker_container {
+    max-width: 1440px;
+    flex-direction: row;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+  }
+}

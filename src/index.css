@@ -2,18 +2,18 @@
   --main: #323f47;
   --main-text: #2f2f2f;
   --light_green: #9be1a0;
-  --background: #f0eff4;
+  --light_gray: #f0eff4;
   --white: #fff;
 }
 
 @font-face {
   font-family: 'Poppins-Bold';
-  src: url('./assets/fonts/Poppins-Bold.ttf') format('ttf');
+  src: url('./assets/fonts/Poppins-Bold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Poppins-Regular';
-  src: url('./assets/fonts/Poppins-Regular.ttf') format('ttf');
+  src: url('./assets/fonts/Poppins-Regular.ttf') format('truetype');
 }
 
 @font-face {
@@ -36,4 +36,11 @@ body {
   width: 100%;
   height: 100vh;
   margin: 0;
+  padding: 16px;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding: 32px;
+  }
 }

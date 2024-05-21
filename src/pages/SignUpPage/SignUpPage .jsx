@@ -1,20 +1,20 @@
-import css from './SignInPage.module.css';
-import SignInForm from '../../components/SignInForm/SignInForm';
+import css from './SignUpPage.module.css';
+import SignUpForm from '../../components/SignUpForm/SignUpForm';
 import AdvantagesSection from '../../components/AdvantagesSection/AdvantagesSection';
 import Logo from '../../components/Logo/Logo';
 import { Link } from 'react-router-dom';
 
-const SignInPage = () => {
+const SignUpPage = () => {
   return (
     <div className={css.mainContainer}>
       <div className={css.container}>
         <Logo />
-        <div className={css.signInContainer}>
-          <h1 className={css.title}>Sign In</h1>
-          <SignInForm />
+        <div className={css.signUpContainer}>
+          <h1 className={css.title}>Sign Up</h1>
+          <SignUpForm />
         </div>
         <p className={css.text}>
-          Don’t have an account? <Link to="/register">Sign Up</Link>
+          Already have account? <Link to="/login">Sign In</Link>
         </p>
       </div>
       <div className={css.AdvantagesSectionContainer}>
@@ -23,5 +23,4 @@ const SignInPage = () => {
     </div>
   );
 };
-
-export default SignInPage;
+export default SignUpPage;
