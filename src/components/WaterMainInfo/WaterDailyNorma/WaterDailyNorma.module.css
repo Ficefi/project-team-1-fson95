@@ -43,3 +43,11 @@
     line-height: 1.49333;
   }
 }
+
+
+@media (min-width: 768px) {
+.waterDailyNormaContainer {
+ margin-top: 101px;
+    margin-left: 32px;
+}
+}

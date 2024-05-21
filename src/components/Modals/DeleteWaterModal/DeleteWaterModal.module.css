@@ -1,0 +1,42 @@
+.delete_header {
+  font-family: 'Poppins-Bold', sans-serif;
+  font-size: 28px;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  margin: 0 auto;
+  color: var(--main);
+}
+
+.delete_text {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.33;
+  letter-spacing: -0.01em;
+  margin: 24px auto;
+  color: var(--main);
+}
+
+.btn_container {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.delete_button {
+  background-color: var(--light_gray);
+  font-family: 'Poppins-Bold', sans-serif;
+  color: rgba(55, 67, 75, 0.3);
+  border: none;
+  border-radius: 30px;
+  padding: 18px 58px;
+  transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.delete_button:hover {
+  background-color: var(--light_green);
+  color: var(--main);
+  cursor: pointer;
+}
+
+
+
+
+

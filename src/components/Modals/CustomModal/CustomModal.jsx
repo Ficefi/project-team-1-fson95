@@ -1,24 +1,26 @@
-import Modal from "react-modal";
-import { AiOutlineClose } from "react-icons/ai";
-import css from "./CustomModal.module.css";
+import Modal from 'react-modal';
+import { AiOutlineClose } from 'react-icons/ai';
+import css from './CustomModal.module.css';
+
+Modal.setAppElement('#root');
 
 const customStyles = {
   content: {
-    height: "auto",
-    width: "auto",
-    padding: "0",
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    border: "none",
-    marginRight: "-50%",
-    backgroundSize: "cover",
-    backgroundColor: "transparent",
-    transform: "translate(-50%, -50%)",
+    height: 'auto',
+    width: 'auto',
+    padding: '0',
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    border: 'none',
+    marginRight: '-50%',
+    backgroundSize: 'cover',
+    backgroundColor: 'transparent',
+    transform: 'translate(-50%, -50%)',
   },
   overlay: {
-    background: "rgba(22, 22, 22, 0.8)",
+    background: 'rgba(22, 22, 22, 0.8)',
   },
 };
 

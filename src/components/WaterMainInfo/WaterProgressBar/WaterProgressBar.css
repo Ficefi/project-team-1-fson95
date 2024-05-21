@@ -10,6 +10,7 @@
   content: '';
 }
 #range-slider {
+  --progress-value: '0%';
   border-radius: 9px;
   width: 174px;
   height: 6px;
@@ -17,7 +18,7 @@
 }
 
 #range-slider > .range-slider__range {
-  background-color: #37ff42;
+  background-color: #37c342;
   border-radius: 9px;
 }
 
@@ -25,16 +26,16 @@
   background-color: var(--white);
   width: 12px;
   height: 12px;
-  border: 1px solid #37ff42;
+  border: 1px solid #37c342;
 }
 
 #range-slider .range-slider__thumb::after {
-  content: '80%';
+  content: var(--progress-value);
   position: absolute;
-  top: 26px;
+  top: 21px;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #37ff42;
+  color: var(--thumb-color);
   font-size: 10px;
 }
 
@@ -82,7 +83,6 @@
 }
 
 @media (min-width: 375px) {
-
 }
 @media (min-width: 768px) {
   .waterProgressBarContainer {
@@ -104,6 +104,7 @@
   #range-slider .range-slider__thumb::after {
     font-size: 12px;
     line-height: 1.86667;
+    top: 26px;
   }
   .waterProgressBarPercentages > li:first-child {
     margin-right: 106px;
