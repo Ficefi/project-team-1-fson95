@@ -67,6 +67,18 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   }
 });
 
+export const getCurrentInfo = createAsyncThunk(
+  'auth/current',
+  async (_, thunkAPI) => {
+    try {
+      const user = await axios.get('users/current');
+      return user;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 /*
  * GET @ /users/current
  * headers: Authorization: Bearer token
