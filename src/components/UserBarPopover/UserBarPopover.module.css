@@ -1,0 +1,56 @@
+.popover_container {
+  border-radius: 15px;
+  padding: 14px 20px;
+  width: 137px;
+  height: 72px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: absolute;
+  gap: 8px;
+  top: 100%;
+  margin-top: 4px;
+  left: 0;
+  z-index: 1;
+
+  box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
+  background: var(--main-white);
+}
+.popover_settings {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--main);
+  cursor: pointer;
+}
+.svg_settings {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1.5px;
+  fill: var(--main-white);
+  stroke: var(--main);
+  margin-right: 8px;
+  cursor: pointer;
+}
+.popover_log_out {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.2;
+  color: rgba(50, 63, 71, 0.4);
+  cursor: pointer;
+}
+.svg_logout {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1.5px;
+  stroke: rgba(50, 63, 71, 0.4);
+  fill: var(--main-white);
+  margin-right: 8px;
+  cursor: pointer;
+}

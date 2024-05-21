@@ -130,7 +130,7 @@
   width: 66.94px;
   font-size: 12px;
   line-height: 14px;
-  font-weight: bold;
+  font-family: 'Poppins-bold', sans-serif;
   color: #323f47;
 }
 
@@ -190,7 +190,7 @@
   background-color: #323f47;
   border-radius: 30px;
   font-size: 8px;
-  font-weight: bold;
+  font-family: 'Poppins-bold', sans-serif;
   line-height: 8px;
   letter-spacing: -0.01em;
   color: #fff;
@@ -216,7 +216,7 @@
   background-color: #9be1a0;
   border-radius: 30px;
   font-size: 8px;
-  font-weight: bold;
+  font-family: 'Poppins-bold', sans-serif;
   line-height: 8px;
   letter-spacing: -0.01em;
   color: #323f47;
@@ -241,7 +241,7 @@
   border-radius: 30px;
   color: #323f47;
   font-size: 8px;
-  font-weight: bold;
+  font-family: 'Poppins-bold', sans-serif;
   line-height: 8px;
   letter-spacing: -0.01em;
 }
