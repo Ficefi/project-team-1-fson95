@@ -3,7 +3,6 @@ import WaterItem from './WaterItem.jsx';
 import css from './WaterListItem.module.css';
 import { selectWaterRecords } from '../../redux/dailyInfoRedux/waterSelector.js';
 import {
-  deleteWater,
   fetchWaterByDay,
   updateWater,
 } from '../../redux/dailyInfoRedux/waterOperation.js';
@@ -18,12 +17,8 @@ export default function WaterList() {
     dispatch(fetchWaterByDay({ date: today }));
   }, [dispatch]);
 
-  const handleDelete = (_id) => {
-    dispatch(deleteWater(_id));
-  };
-
   const updateWaterData = () => {
-    dispatch(updateWater());
+    dispatch(updateWater({}));
   };
 
   return (
@@ -32,10 +27,9 @@ export default function WaterList() {
         {waterData.map((item) => (
           <WaterItem
             key={item._id}
-            id={item._id}
+            _id={item._id}
             dose={item.consumedVolume}
             date={new Date(item.date)}
-            onDelete={handleDelete}
             updateWaterData={updateWaterData}
           />
         ))}

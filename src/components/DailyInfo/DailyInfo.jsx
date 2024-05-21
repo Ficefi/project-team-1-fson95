@@ -9,15 +9,13 @@ import WaterList from '../WaterListItem/WaterList';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchWaterByDay } from '../../redux/dailyInfoRedux/waterOperation';
 import { setSelectedDate } from '../../redux/dailyInfoRedux/dailyInfoSlice';
-import { userSlice } from '../../redux/dailyInfoRedux/userSlice';
 
 const DailyInfo = () => {
   const dispatch = useDispatch();
 
   const selectedDate = useSelector((state) => state.dailyInfo.selectedDate);
   //user
-  const userName = useSelector(userSlice.selectors.name);
-  const avatarUrl = useSelector(userSlice.selectors.avatar);
+
   const handleClick = (date) => {
     dispatch(fetchWaterByDay({ date }));
   };
@@ -31,7 +29,7 @@ const DailyInfo = () => {
   return (
     <div className={css.main_daily_container}>
       <div className={css.user_container}>
-        <UserPanel userName={userName} userAvatarUrl={avatarUrl} />
+        <UserPanel />
       </div>
 
       <div className={css.daily_info_container}>

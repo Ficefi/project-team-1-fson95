@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+axios.defaults.baseURL = 'https://aquatrack-api.onrender.com';
 
 export const fetchWaterByDay = createAsyncThunk(
   'water/fetchWaterByDay',
@@ -27,27 +28,31 @@ export const addWater = createAsyncThunk(
 
 export const updateWater = createAsyncThunk(
   'water/updateWater',
-  async ({ id, data }, { rejectWithValue }) => {
+  async ({ _id, data }, { rejectWithValue }) => {
     try {
-      const response = await axios.put(`/water/${id}`, data);
+      if (_id === undefined) {
+        throw new Error('ID is undefined');
+      }
+      const response = await axios.put(`/water/${_id}`, data);
       return response.data;
     } catch (e) {
-      return rejectWithValue(e.response.data);
+      return rejectWithValue(e.response ? e.response.data : e.message);
     }
   }
 );
 
 export const deleteWater = createAsyncThunk(
   'water/deleteWater',
-  async (id, { rejectWithValue }) => {
+  async (_id, thunkAPI) => {
     try {
-      const response = await axios.delete(`/water/${id}`);
-      return response.data;
-    } catch (e) {
-      return rejectWithValue(e.response.data);
+      await axios.delete(`/water/${_id}`);
+      return { _id };
+    } catch (er) {
+      return thunkAPI.rejectWithValue(er.message);
     }
   }
 );
+
 export const fetchUserAvatar = createAsyncThunk(
   'user/fetchUserAvatar',
   async (_, { rejectWithValue }) => {

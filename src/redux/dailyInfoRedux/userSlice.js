@@ -6,14 +6,14 @@ export const userSlice = createSliceWithAsyncThunk({
   initialState: {
     name: null,
     email: null,
-    avatarUrl: null,
+    avatarURL: null,
     isLoading: false,
     error: null,
   },
   selectors: {
     name: (state) => state.name,
     email: (state) => state.email,
-    avatar: (state) => state.avatarUrl,
+    avatarURL: (state) => state.avatarURL,
   },
   reducers: (create) => ({
     get: create.asyncThunk(
@@ -39,10 +39,10 @@ export const userSlice = createSliceWithAsyncThunk({
         rejected: (state, action) => {
           state.error = action.payload ?? action.error;
         },
-        fulfilled: (state, { payload: { name, email, avatarUrl } }) => {
+        fulfilled: (state, { payload: { name, email, avatarURL } }) => {
           state.name = name;
           state.email = email;
-          state.avatarUrl = avatarUrl;
+          state.avatarURL = avatarURL;
         },
         settled: (state) => {
           state.isLoading = false;
@@ -51,5 +51,3 @@ export const userSlice = createSliceWithAsyncThunk({
     ),
   }),
 });
-
-export const userSelectors = userSlice.getSelectors(userSlice.selectSlice);

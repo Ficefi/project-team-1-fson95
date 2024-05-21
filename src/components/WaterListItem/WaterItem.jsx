@@ -1,13 +1,13 @@
 import css from './WaterListItem.module.css';
 import sprite from '../../assets/svg/sprite.svg';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux'; // Додано імпорт
 import DeleteWaterModal from '../Modals/DeleteWaterModal/DeleteWaterModal';
 import WaterModal from '../../components/Modals/WaterModal/WaterModal';
 import { updateWater } from '../../redux/dailyInfoRedux/waterOperation';
+import { useDispatch } from 'react-redux';
 
-export default function WaterItem({ id, dose, date, onDelete }) {
-  const dispatch = useDispatch(); // Отримання диспетчера Redux
+export default function WaterItem({ _id, dose, date }) {
+  const dispatch = useDispatch();
 
   const hours = date.getHours();
   const minutes = date.getMinutes();
@@ -15,7 +15,7 @@ export default function WaterItem({ id, dose, date, onDelete }) {
     .toString()
     .padStart(2, '0')}`;
 
-  // open modal
+  //open modal
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState(null);
 
@@ -30,8 +30,7 @@ export default function WaterItem({ id, dose, date, onDelete }) {
   };
 
   const handleEditSubmit = (formData) => {
-    dispatch(updateWater(formData)); // Виклик updateWater з використанням диспетчера
-
+    dispatch(updateWater({ _id, data: formData }));
     closeModal();
   };
 
@@ -64,14 +63,7 @@ export default function WaterItem({ id, dose, date, onDelete }) {
         />
       )}
       {isModalOpen && modalType === 'deleteWater' && (
-        <DeleteWaterModal
-          isOpen={isModalOpen}
-          onClose={closeModal}
-          onDelete={() => {
-            onDelete(id);
-            closeModal();
-          }}
-        />
+        <DeleteWaterModal isOpen={isModalOpen} onClose={closeModal} _id={_id} />
       )}
     </div>
   );

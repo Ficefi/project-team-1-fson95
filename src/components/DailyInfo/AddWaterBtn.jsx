@@ -29,7 +29,10 @@ const AddWaterBtn = () => {
       </div>
 
       <WaterModal
-        onSubmit={(data) => dispatch(addWater(data))}
+        onSubmit={(data) => {
+          dispatch(addWater(data));
+          setIsOpenModal(false);
+        }}
         typeOperation={typeOperation}
         isOpen={isModalOpen}
         onClose={() => setIsOpenModal(false)}

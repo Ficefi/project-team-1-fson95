@@ -1,11 +1,14 @@
 import { useDispatch } from 'react-redux';
-import { deleteWater } from '../../../redux/water/operations';
 import CustomModal from '../CustomModal/CustomModal';
 import css from './DeleteWaterModal.module.css';
+import { deleteWater } from '../../../redux/dailyInfoRedux/waterOperation';
 
-const DeleteWaterModal = ({ isOpen, onClose, id }) => {
+const DeleteWaterModal = ({ isOpen, onClose, _id }) => {
   const dispatch = useDispatch();
-
+  const handleDelete = () => {
+    dispatch(deleteWater(_id));
+    onClose();
+  };
   return (
     <>
       <CustomModal isOpen={isOpen} onClose={onClose}>
@@ -14,10 +17,7 @@ const DeleteWaterModal = ({ isOpen, onClose, id }) => {
           Are you sure you want to delete the entry?
         </p>
         <div className={css.btn_container}>
-          <button
-            className={css.delete_button}
-            onClick={() => dispatch(deleteWater(id))}
-          >
+          <button className={css.delete_button} onClick={handleDelete}>
             Delete
           </button>
           <button className={css.delete_button} onClick={onClose}>
