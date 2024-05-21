@@ -16,11 +16,12 @@ const waterSchema = Yup.object().shape({
   time: Yup.string().required('Required'),
 });
 
-const WaterForm = () => {
+const WaterForm = ({ typeOperation, defaultValues, onClose }) => {
   const dispatch = useDispatch();
 
   const { register, handleSubmit } = useForm({
     resolver: yupResolver(waterSchema),
+    defaultValues,
   });
 
   const [waterSetValue, setWaterSetValue] = useState(50);
@@ -40,13 +41,20 @@ const WaterForm = () => {
     setWaterSetValue(parseInt(value) || 0);
   };
 
-  const submit = (data) => {
+  const submit = async (data) => {
     const newData = {
       amountWater: data.amountWater,
       time: data.time,
     };
-    dispatch(addWater(newData));
-    toast.success('Added, cool!');
+
+    if (typeOperation === 'addWater') {
+      await dispatch(addWater(newData));
+      toast.success('Added, cool!');
+    } else {
+      await dispatch(updateWater({ _id: defaultValues._id, ...newData }));
+      toast.success('Updated, cool!');
+    }
+    onClose();
   };
 
   return (
