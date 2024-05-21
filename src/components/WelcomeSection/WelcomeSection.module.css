@@ -1,16 +1,27 @@
-.container {
-  width: 343px;
-  height: 411px;
-  padding: 0 16px;
-  border-radius: 30px;
-  background-color: #f0eff4;
+@media (min-width: 320px) {
+  .container {
+    height: 498px;
+    background-color: #f0eff4;
+    padding: 24px 16px 0 16px;
+    border-radius: 30px;
+  }
+}
+
+@media (min-width: 375px) {
+  .container {
+    width: 343px;
+    height: 411px;
+    padding: 24px 16px 0 16px;
+    border-radius: 30px;
+    background-color: #f0eff4;
+  }
 }
 
 @media (min-width: 768px) {
   .container {
     width: 704px;
     height: 498px;
-    padding: 0 32px;
+    padding: 32px 32px 0 32px;
   }
 }
 
@@ -48,7 +59,7 @@
   margin: 16px 0 0 0;
   font-size: 38px;
   color: #323f47;
-  font-weight: bold;
+  font-family: 'Poppins-bold', sans-serif;
   line-height: 38px;
   letter-spacing: -0.01em;
 }
@@ -69,8 +80,6 @@
   }
 }
 
-/*  */
-
 .btnContainer {
   margin: 32px 0 0 0;
   display: flex;
@@ -88,12 +97,12 @@
   display: block;
   width: 104px;
   height: 46px;
-  padding: 14px 28px;
+  padding: 14px 27px;
   border: 1px solid #323f47;
   border-radius: 30px;
   text-decoration: none;
   font-size: 14px;
-  font-weight: bold;
+  font-family: 'Poppins-bold', sans-serif;
   color: #323f47;
   line-height: 18px;
   letter-spacing: -0.01em;
@@ -108,7 +117,7 @@
   .signInBtn {
     width: 135px;
     height: 60px;
-    padding: 18px 40px;
+    padding: 18px 39px;
     font-size: 16px;
     line-height: 24px;
   }
@@ -124,7 +133,7 @@
   border-radius: 30px;
   text-decoration: none;
   font-size: 14px;
-  font-weight: bold;
+  font-family: 'Poppins-bold', sans-serif;
   color: #323f47;
   line-height: 18px;
   letter-spacing: -0.01em;

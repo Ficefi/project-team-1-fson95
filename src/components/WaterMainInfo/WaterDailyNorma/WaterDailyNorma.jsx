@@ -30,7 +30,7 @@ function WaterDailyNorma() {
     };
 
     fetchWaterRate();
-  }, [token]);
+  }, []);
 
   return (
     <div className={css.waterDailyNormaContainer}>

@@ -87,7 +87,11 @@ const SignInForm = () => {
           onClick={togglePasswordVisibility}
         >
           <svg className={css.eyeIcon} width="20" height="20">
-            <use href="/src/assets/svg/sprite.svg#icon-eye-off"></use>
+            <use
+              href={`/src/assets/svg/sprite.svg#${
+                showPassword ? 'icon-eye' : 'icon-eye-off'
+              }`}
+            ></use>
           </svg>
         </button>
         {errors.password && (
