@@ -1,6 +1,6 @@
 //UserBarPopover.jsx
 import css from './UserBarPopover.module.css';
-import sprite from '../../assets/svg/sprite.svg';
+import sprite from '../../../../../public/svg/sprite.svg';
 
 const UserBarPopover = ({ toggleUserSetting, toggleLogOut }) => {
   return (
