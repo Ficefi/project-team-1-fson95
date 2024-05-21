@@ -11,97 +11,109 @@ import LogOutModal from '../Modals/LogOutModal/LogOutModal.jsx';
 // 4 - стилізувати
 const UserBarPopover = ({ buttonRef, isOpened, toggle }) => {
   const [dimensions, setDimensions] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalType, setModalType] = useState(null);
+  useEffect(() => {
+    if (!isOpened) {
+      return;
+    }
+    setDimensions(buttonRef.current.getBoundingClientRect());
+  }, [buttonRef, isOpened]);
   const popoverRef = useRef(null);
 
   useEffect(() => {
-    if (isOpened) {
-      setDimensions(buttonRef.current.getBoundingClientRect());
+    if (!isOpened) {
+      return;
     }
-  }, [buttonRef, isOpened]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (isOpened) {
-        setDimensions(buttonRef.current.getBoundingClientRect());
-      }
+    const cb = () => {
+      setDimensions(buttonRef.current.getBoundingClientRect());
     };
-
-    window.addEventListener('resize', handleResize);
-
+    window.addEventListener('resize', cb);
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', cb);
     };
   }, [buttonRef, isOpened]);
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (popoverRef.current && !popoverRef.current.contains(event.target)) {
-        toggle();
+    if (!isOpened) {
+      return;
+    }
+    function handleClick(event) {
+      const { target } = event;
+      if (
+        popoverRef.current === target ||
+        buttonRef.current === target ||
+        popoverRef.current.contains(target) ||
+        buttonRef.current.contains(target)
+      ) {
+        return;
       }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-
+      toggle();
+    }
+    document.addEventListener('mousedown', handleClick);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('mousedown', handleClick);
     };
-  }, [toggle]);
+  }, [buttonRef, toggle, isOpened]);
 
-  const handleModalOpen = (type) => {
+  const { left = 0, bottom = 0 } = dimensions ?? {};
+
+  //open modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalType, setModalType] = useState(null);
+
+  const openModal = (type) => {
+    toggle();
     setIsModalOpen(true);
     setModalType(type);
   };
 
-  const handleModalClose = () => {
+  const closeModal = () => {
     setIsModalOpen(false);
     setModalType(null);
   };
 
-  const { left = 0, bottom = 0 } = dimensions ?? {};
-
-  return isOpened ? (
+  return (
     <>
       {createPortal(
-        <div
-          className={css.popover_container}
-          style={{
-            transform: `translate(${left}px, ${bottom}px)`,
-          }}
-          ref={popoverRef}
-        >
+        isOpened ? (
           <div
-            onClick={() => handleModalOpen('setting')}
-            className={css.popover_settings}
+            className={css.popover_container}
+            style={{
+              transform: `translate(${left}px, ${bottom}px)`,
+            }}
+            ref={popoverRef}
           >
-            <svg className={css.svg_settings} alt="Settings">
-              <use href={`${sprite}#icon-settings`}></use>
-            </svg>
-            Setting
+            <div
+              onClick={() => openModal('setting')}
+              className={css.popover_settings}
+            >
+              <svg className={css.svg_settings} alt="Settings">
+                <use href={`${sprite}#icon-settings`}></use>
+              </svg>
+              Setting
+            </div>
+            <div
+              onClick={() => openModal('logout')}
+              className={css.popover_log_out}
+            >
+              <svg className={css.svg_logout} alt="Log Out">
+                <use href={`${sprite}#icon-log-out`}></use>
+              </svg>
+              Log out
+            </div>
           </div>
-          <div
-            onClick={() => handleModalOpen('logout')}
-            className={css.popover_log_out}
-          >
-            <svg className={css.svg_logout} alt="Log Out">
-              <use href={`${sprite}#icon-log-out`}></use>
-            </svg>
-            Log out
-          </div>
-        </div>,
+        ) : null,
         document.body
       )}
       <UserSettingsModal
         isOpen={isModalOpen && modalType === 'setting'}
-        onClose={handleModalClose}
+        onClose={closeModal}
       />
       <LogOutModal
         isOpen={isModalOpen && modalType === 'logout'}
-        onClose={handleModalClose}
+        onClose={closeModal}
       />
     </>
-  ) : null;
+  );
 };
 
 export default UserBarPopover;

@@ -12,7 +12,7 @@
   margin-top: 4px;
   left: 0;
   top: 0;
-  z-index: 2;
+  z-index: 1000;
 
   box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
   background: var(--main-white);
@@ -25,6 +25,7 @@
   line-height: 1.2;
   color: var(--main);
   cursor: pointer;
+  z-index: 999;
 }
 .svg_settings {
   width: 16px;
@@ -44,6 +45,7 @@
   line-height: 1.2;
   color: rgba(50, 63, 71, 0.4);
   cursor: pointer;
+  z-index: 999;
 }
 .svg_logout {
   width: 16px;

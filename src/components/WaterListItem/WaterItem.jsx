@@ -41,7 +41,7 @@ export default function WaterItem({ _id, dose, date }) {
       </svg>
       <div className={css.info}>
         <div className={css.dose}>{dose} ml</div>
-        <div className={css.date}>{formattedTime}</div>
+        <div className={css.date}>{formattedTime} AM</div>
       </div>
       <div className={css.btn}>
         <svg className={css.edit_icon} onClick={() => openModal('editWater')}>
