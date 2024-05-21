@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
-import { addWater } from '../../../redux/water/operations';
+import { addWater, updateWater } from '../../../redux/water/operations';
 import { toast } from 'react-toastify';
 
 const waterSchema = Yup.object().shape({
