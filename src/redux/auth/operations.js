@@ -5,6 +5,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://aquatrack-api.onrender.com';
 
+
 // Utility to add JWT
 const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -106,4 +107,21 @@ export const refreshUser = createAsyncThunk(
   }
 );
 
+
 export const getPersistedToken = (state) => state.auth.token;
+
+
+export const updateUserSettings = createAsyncThunk(
+  'auth/updateSettings',
+  async (formData, thunkAPI) => {
+    try {
+      const res = await axios.put('/users/update', formData);
+      console.log('Settings updated successfully');
+      return res.data;
+    } catch (error) {
+      toast.error(error.response.data.message);
+      console.log('Failed to update settings');
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

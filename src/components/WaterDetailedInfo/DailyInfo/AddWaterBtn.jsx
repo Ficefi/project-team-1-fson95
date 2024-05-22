@@ -1,5 +1,5 @@
 import css from './DailyInfo.module.css';
-import sprite from '../../assets/svg/sprite.svg';
+import sprite from '../../../../public/svg/sprite.svg';
 
 const AddWaterBtn = () => {
   return (
