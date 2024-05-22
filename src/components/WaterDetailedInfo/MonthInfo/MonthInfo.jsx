@@ -13,7 +13,7 @@ import {
 } from 'date-fns';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import css from './MonthInfo.module.css';
-import sprite from '../../../assets/svg/sprite.svg';
+import sprite from '../../../../public/svg/sprite.svg';
 import clsx from 'clsx';
 
 const MonthInfo = () => {
