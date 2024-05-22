@@ -1,14 +1,11 @@
 // DailyInfo.jsx
 import { useEffect } from 'react';
 import { format } from 'date-fns';
-import UserPanel from '../UserPanel/UserPanel';
 import css from './DailyInfo.module.css';
 import AddWaterBtn from './AddWaterBtn';
-import MonthInfo from '../MonthInfo/MonthInfo';
-import WaterList from '../WaterListItem/WaterList';
+import WaterList from '../WaterItem/WaterList';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchWaterByDay } from '../../redux/dailyInfoRedux/waterOperation';
-import { setSelectedDate } from '../../redux/dailyInfoRedux/dailyInfoSlice';
+import { fetchWaterByDay } from '../../redux/water/waterOperation';
 
 const DailyInfo = () => {
   const dispatch = useDispatch();
@@ -27,11 +24,7 @@ const DailyInfo = () => {
   }, [selectedDate, dispatch]);
 
   return (
-    <div className={css.main_daily_container}>
-      <div className={css.user_container}>
-        <UserPanel />
-      </div>
-
+    <div>
       <div className={css.daily_info_container}>
         <div className={css.date}>
           {selectedDate
@@ -43,15 +36,6 @@ const DailyInfo = () => {
       <div className={css.water_list}>
         <WaterList onSelectedDate={handleClick} />
       </div>
-      <MonthInfo
-        selectedDate={selectedDate}
-        onDateClick={(date) =>
-          dispatch(fetchWaterByDay({ date: date.toISOString() }))
-        }
-        updateSelectedDate={(date) =>
-          dispatch(setSelectedDate(date.toISOString()))
-        }
-      />
     </div>
   );
 };

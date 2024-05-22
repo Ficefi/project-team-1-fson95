@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import CustomModal from '../CustomModal/CustomModal';
 import css from './DeleteWaterModal.module.css';
-import { deleteWater } from '../../../redux/dailyInfoRedux/waterOperation';
+import { deleteWater } from '../../../redux/water/waterOperation';
 
 const DeleteWaterModal = ({ isOpen, onClose, _id }) => {
   const dispatch = useDispatch();

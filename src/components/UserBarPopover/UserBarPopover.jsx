@@ -3,8 +3,8 @@ import css from './UserBarPopover.module.css';
 import sprite from '../../assets/svg/sprite.svg';
 import { createPortal } from 'react-dom';
 import { useEffect, useRef, useState } from 'react';
-import UserSettingsModal from '../Modals/UserSettingsModal/UserSettingsModal.jsx';
-import LogOutModal from '../Modals/LogOutModal/LogOutModal.jsx';
+import UserSettingsModal from '../Modals/UserSettingsModal/UserSettingsModal';
+import LogOutModal from '../Modals/LogOutModal/LogoutModal';
 //1 - знайти місцеположення кнопки and react on viewport size change
 //2 - змістити поповер на потрібне місце
 // 3 - клік поза межами поповера або кнопки - закрити

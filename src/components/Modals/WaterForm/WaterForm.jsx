@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import css from './WaterForm.module.css';
 import { BiMinus } from 'react-icons/bi';
 import { AiOutlinePlus } from 'react-icons/ai';
-import { addWater } from '../../../redux/dailyInfoRedux/waterOperation';
+import { addWater } from '../../../redux/water/waterOperation';
 
 const waterSchema = Yup.object().shape({
   consumedVolume: Yup.number()

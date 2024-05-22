@@ -3,7 +3,7 @@ import sprite from '../../assets/svg/sprite.svg';
 import { useState } from 'react';
 import WaterModal from '../Modals/WaterModal/WaterModal';
 import { useDispatch } from 'react-redux';
-import { addWater } from '../../redux/dailyInfoRedux/waterOperation';
+import { addWater } from '../../redux/water/waterOperation';
 
 const AddWaterBtn = () => {
   const [isModalOpen, setIsOpenModal] = useState(false);

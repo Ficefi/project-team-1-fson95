@@ -9,19 +9,10 @@
 
 /* Mobile styles */
 
-.main_daily_container {
-  position: relative;
-  padding: 40px 20px;
-  border-radius: 30px;
-  max-width: 343px;
-  background-color: var(--background);
-}
-
 .daily_info_container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 903px;
   height: 30px;
 }
 
@@ -35,7 +26,6 @@
 }
 
 .add_water_container {
-  width: 303px;
   height: 30px;
   display: flex;
   align-items: center;
@@ -50,6 +40,7 @@
   letter-spacing: -0.01em;
   color: var(--main);
 }
+
 .icon_add_water_btn {
   width: 30px;
   height: 30px;

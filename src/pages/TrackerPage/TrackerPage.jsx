@@ -1,14 +1,21 @@
 import WaterMainInfo from '../../components/WaterMainInfo/WaterMainInfo';
-import MonthInfo from '../../components/MonthInfo/MonthInfo';
+import WaterDetailedInfo from '../../components/WaterDetailedInfo/WaterDetailedInfo';
 import css from './TrackerPage.module.css';
-import DailyInfo from '../../components/DailyInfo/DailyInfo';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { getCurrentInfo } from '../../redux/auth/operations';
 
 const TrackerPage = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCurrentInfo());
+  }, [dispatch]);
+
   return (
     <div className={css.tracker_container}>
       <WaterMainInfo />
-      <DailyInfo />
-      <MonthInfo />
+      <WaterDetailedInfo />
     </div>
   );
 };

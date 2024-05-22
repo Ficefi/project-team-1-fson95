@@ -18,6 +18,7 @@
   margin-left: auto;
   margin-top: 42px;
   align-items: center;
+  cursor: pointer;
 }
 
 .addWater_btn > svg {
@@ -33,6 +34,10 @@
 @media (min-width: 768px) {
   .addWater_btn {
     margin-left: 462px;
+  }
+}
+@media (min-width: 768px) {
+  .addWater_btn {
     margin-top: 26px;
     width: 178px;
     height: 60px;
@@ -49,6 +54,10 @@
 
 @media (min-width: 1440px) {
   .addWater_btn {
-    margin-left: 398px;
+    margin-left: 430px;
+    margin-top: 56px;
+  }
+  .addWater_btn {
+    margin-top: 56px;
   }
 }

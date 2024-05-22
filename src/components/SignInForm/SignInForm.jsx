@@ -1,13 +1,13 @@
-import css from './SignInForm.module.css';
 import { useDispatch } from 'react-redux';
-
 import { signIn } from '../../redux/auth/operations';
-import { useId } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useId, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import css from './SignInForm.module.css';
 
 const LoginSchema = Yup.object().shape({
-  email: Yup.string().email().required('Required'),
+  email: Yup.string().email('Invalid email').required('Required'),
   password: Yup.string().required('Required'),
 });
 
@@ -18,66 +18,91 @@ const initialValues = {
 
 const SignInForm = () => {
   const dispatch = useDispatch();
+
+  const [showPassword, setShowPassword] = useState(false);
+
   const emailFieldId = useId();
   const passwordFieldId = useId();
 
-  const handleSubmit = (values, actions) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: yupResolver(LoginSchema),
+    defaultValues: initialValues,
+    mode: 'onChange',
+  });
+
+  const onSubmit = (values) => {
     dispatch(
       signIn({
         email: values.email,
         password: values.password,
       })
     );
-    actions.resetForm();
+    reset();
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={handleSubmit}
-      validationSchema={LoginSchema}
-    >
-      <Form className={css.signInFields}>
-        <div className={css.signInFormInput}>
-          <label htmlFor={emailFieldId} className={css.fieldText}>
-            Email
-          </label>
-          <Field
-            type="text"
-            name="email"
-            id={emailFieldId}
-            placeholder="Enter your email"
-            className={css.inputField}
-          />
-          <ErrorMessage
-            name="email"
-            component="span"
-            className={css.errMessage}
-          />
-        </div>
-        <div className={css.signInFormInput}>
-          <label htmlFor={passwordFieldId} className={css.fieldText}>
-            Password
-          </label>
-          <Field
-            type="password"
-            name="password"
-            id={passwordFieldId}
-            placeholder="Enter your password"
-            className={css.inputField}
-          />
-          <ErrorMessage
-            name="password"
-            component="span"
-            className={css.errMessage}
-          />
-        </div>
-
-        <button type="submit" className={css.signInBtn}>
-          Sign In
+    <form onSubmit={handleSubmit(onSubmit)} className={css.signInFields}>
+      <div className={css.signInFormInput}>
+        <label htmlFor={emailFieldId} className={css.fieldText}>
+          Email
+        </label>
+        <input
+          type="text"
+          id={emailFieldId}
+          placeholder="Enter your email"
+          className={`${css.inputField} ${
+            errors.email ? css.inputFieldError : ''
+          }`}
+          {...register('email')}
+        />
+        {errors.email && (
+          <span className={css.errMessage}>{errors.email.message}</span>
+        )}
+      </div>
+      <div className={css.signInFormInput}>
+        <label htmlFor={passwordFieldId} className={css.fieldText}>
+          Password
+        </label>
+        <input
+          type={showPassword ? 'text' : 'password'}
+          id={passwordFieldId}
+          placeholder="Enter your password"
+          className={`${css.inputField} ${
+            errors.password ? css.inputFieldError : ''
+          }`}
+          {...register('password')}
+        />
+        <button
+          type="button"
+          className={css.togglePasswordBtn}
+          onClick={togglePasswordVisibility}
+        >
+          <svg className={css.eyeIcon} width="20" height="20">
+            <use
+              href={`/src/assets/svg/sprite.svg#${
+                showPassword ? 'icon-eye' : 'icon-eye-off'
+              }`}
+            ></use>
+          </svg>
         </button>
-      </Form>
-    </Formik>
+        {errors.password && (
+          <span className={css.errMessage}>{errors.password.message}</span>
+        )}
+      </div>
+
+      <button type="submit" className={css.signInBtn}>
+        Sign In
+      </button>
+    </form>
   );
 };
 

@@ -6,23 +6,23 @@ const AdvantagesSection = () => {
         <ul className={css.customersAvatars}>
           <li className={css.customer}>
             <img
-              src="/src/assets/AdvantagesSection/User_1.png"
+              src="/public/images/Users/user_1.webp"
               className={css.avatar}
-              alt=""
+              alt="user"
             />
           </li>
           <li className={css.customer}>
             <img
-              src="/src/assets/AdvantagesSection/User_2.png"
+              src="/public/images/Users/user_2.webp"
               className={css.avatar}
-              alt=""
+              alt="user"
             />
           </li>
           <li className={css.customer}>
             <img
-              src="/src/assets/AdvantagesSection/User_3.png"
+              src="/public/images/Users/user_3.webp"
               className={css.avatar}
-              alt=""
+              alt="user"
             />
           </li>
         </ul>

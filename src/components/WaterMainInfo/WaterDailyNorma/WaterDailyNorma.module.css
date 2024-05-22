@@ -29,7 +29,7 @@
     padding: 14px 18px;
     width: 129px;
     height: 78px;
-    margin-top: 87px;
+    margin-top: 101px;
   }
 
   .waterDailyNormaTitle {
@@ -42,4 +42,12 @@
     font-size: 15px;
     line-height: 1.49333;
   }
+}
+
+
+@media (min-width: 768px) {
+.waterDailyNormaContainer {
+ margin-top: 101px;
+    margin-left: 32px;
+}
 }

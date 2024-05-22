@@ -4,7 +4,7 @@ import testAvatar from '../../assets/test-avatar.jpg';
 import { useRef, useState } from 'react';
 import UserBarPopover from '../UserBarPopover/UserBarPopover';
 import { useSelector } from 'react-redux';
-import { userSlice } from '../../redux/dailyInfoRedux/userSlice';
+import { userSlice } from '../../redux/user/userSlice';
 
 const UserPanel = () => {
   const buttonRef = useRef(null);

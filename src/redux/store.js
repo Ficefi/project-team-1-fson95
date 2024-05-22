@@ -10,11 +10,10 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { usersReducer } from './water/slice';
 import { authReducer } from './auth/slice';
-import dailyInfoSlice from './dailyInfoRedux/dailyInfoSlice';
-import { userSlice } from './dailyInfoRedux/userSlice';
-import { waterReducer } from './dailyInfoRedux/waterSlice';
+import dailyInfoSlice from './dailyInfo/dailyInfoSlice';
+import { userSlice } from './user/userSlice';
+import { waterReducer } from './water/waterSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -25,7 +24,6 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    userWater: usersReducer,
     water: waterReducer,
     dailyInfo: dailyInfoSlice,
     [userSlice.reducerPath]: userSlice.reducer,
