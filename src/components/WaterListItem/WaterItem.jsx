@@ -40,7 +40,9 @@ export default function WaterItem({ _id, dose, date }) {
         <use href={`${sprite}#icon-water-glass`}></use>
       </svg>
       <div className={css.info}>
-        <div className={css.dose}>{dose} ml</div>
+        <div className={css.dose}>
+          {dose >= 1000 ? `${(dose / 1000).toFixed(2)} L` : `${dose} ml`}
+        </div>
         <div className={css.date}>{formattedTime} AM</div>
       </div>
       <div className={css.btn}>
