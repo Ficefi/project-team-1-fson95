@@ -1,4 +1,4 @@
-import UserPanel from './UserPanel/UserPanel';
+import UserPanel from '../UserPanel/UserPanel';
 import DailyInfo from './DailyInfo/DailyInfo';
 import MonthInfo from './MonthInfo/MonthInfo';
 import css from './WaterDetailedInfo.module.css';

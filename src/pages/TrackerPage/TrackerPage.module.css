@@ -8,6 +8,7 @@
 @media only screen and (min-width: 1440px) {
   .tracker_container {
     max-width: 1440px;
+    height: 736px;
     flex-direction: row;
     margin: 0 auto;
     display: flex;

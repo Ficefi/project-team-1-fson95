@@ -10,7 +10,7 @@ import { addWater, updateWater } from '../../../redux/water/operations';
 import { toast } from 'react-toastify';
 
 const waterSchema = Yup.object().shape({
-  amountWater: Yup.number()
+  consumedVolume: Yup.number()
     .required('Required')
     .positive('Water amount must be positive'),
   time: Yup.string().required('Required'),
@@ -43,15 +43,18 @@ const WaterForm = ({ typeOperation, defaultValues, onClose }) => {
 
   const submit = async (data) => {
     const newData = {
-      amountWater: data.amountWater,
+      consumedVolume: data.consumedVolume,
       time: data.time,
     };
 
     if (typeOperation === 'addWater') {
-      await dispatch(addWater(newData));
+      //await dispatch(addWater(newData));
+      await dispatch(updateWater({ _id: defaultValues._id, ...newData }));
+      console.log(newData.meta.arg);
       toast.success('Added, cool!');
     } else {
-      await dispatch(updateWater({ _id: defaultValues._id, ...newData }));
+      //await dispatch(updateWater({ _id: defaultValues._id, ...newData }));
+      await dispatch(addWater(newData));
       toast.success('Updated, cool!');
     }
     onClose();
@@ -102,8 +105,8 @@ const WaterForm = ({ typeOperation, defaultValues, onClose }) => {
         </label>
         <input
           type="number"
-          name="amountWater"
-          {...register('amountWater')}
+          name="consumedVolume"
+          {...register('consumedVolume')}
           step="50"
           min="0"
           value={waterSetValue}

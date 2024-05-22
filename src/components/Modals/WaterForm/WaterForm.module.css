@@ -22,6 +22,7 @@ margin-block-end: 14px;
 
 .button_amount {
     width: 40px;
+    cursor: pointer;
 height: 40px;
 border-radius: 50%;
 border: 1.50px solid var(--main);
