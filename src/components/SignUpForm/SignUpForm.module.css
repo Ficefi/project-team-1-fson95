@@ -114,3 +114,7 @@
   border: 1px solid #ef5050;
   color: #ef5050;
 }
+
+.inputFieldActivated {
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
