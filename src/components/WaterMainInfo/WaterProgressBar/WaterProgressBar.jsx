@@ -8,8 +8,8 @@ function WaterProgressBar() {
   useEffect(() => {
     const rangeElement = document.getElementById('range-slider');
     if (
-      (87 > progressValue && progressValue > 63) ||
-      (44 > progressValue && progressValue > 10)
+      (86 > progressValue && progressValue > 62) ||
+      (44 > progressValue && progressValue > 8)
     ) {
       rangeElement.style.setProperty('--thumb-color', '#37c342');
       rangeElement.style.setProperty('--progress-value', `'${progressValue}%'`);

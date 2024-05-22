@@ -26,6 +26,10 @@
   height: 16px;
 }
 
+.addWater_btn:hover {
+  color: var(--light_green);
+}
+
 @media (min-width: 375px) {
   .addWater_btn {
     margin-left: 171px;
