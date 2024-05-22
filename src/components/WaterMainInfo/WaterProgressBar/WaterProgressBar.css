@@ -1,0 +1,135 @@
+#range-slider .range-slider__thumb[data-disabled] {
+  z-index: 1;
+  border-radius: 4px;
+  background: var(--background);
+  height: 6px;
+  border: 0;
+  width: 0;
+}
+
+#range-slider .range-slider__thumb[data-disabled]::after {
+  content: '';
+}
+
+#range-slider {
+  --progress-value: '0%';
+  border-radius: 9px;
+  width: 174px;
+  height: 6px;
+  background-color: var(--background);
+}
+
+#range-slider>.range-slider__range {
+  background-color: #37c342;
+  border-radius: 9px;
+}
+
+#range-slider .range-slider__thumb {
+  background-color: var(--white);
+  width: 12px;
+  height: 12px;
+  border: 1px solid #37c342;
+}
+
+#range-slider .range-slider__thumb::after {
+  content: var(--progress-value);
+  position: absolute;
+  top: 21px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--thumb-color);
+  font-size: 10px;
+}
+
+.waterProgressBarContainer {
+  border-radius: 15px;
+  padding: 12px;
+  width: 198px;
+  box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 49px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.waterProgressBarTitle {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--main);
+  margin: 0;
+}
+
+.waterProgressBarPercentages {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  width: 174px;
+  padding: 0;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1;
+  color: rgba(47, 47, 47, 0.6);
+  margin: 0;
+}
+
+.waterProgressBarPercentages>li:first-child {
+  margin-right: 66px;
+}
+
+.waterProgressBarPercentages>li:nth-child(2) {
+  margin-right: 49px;
+}
+
+@media (min-width: 375px) {}
+
+@media (min-width: 768px) {
+  .waterProgressBarContainer {
+    width: 295px;
+    padding: 20px;
+    gap: 6px;
+    margin-top: 87px;
+    margin-left: 172px;
+  }
+
+  #range-slider {
+    width: 255px;
+    height: 8px;
+  }
+
+  .waterProgressBarPercentages {
+    font-size: 12px;
+    line-height: 1.86667;
+  }
+
+  #range-slider .range-slider__thumb::after {
+    font-size: 12px;
+    line-height: 1.86667;
+    top: 26px;
+  }
+
+  .waterProgressBarPercentages>li:first-child {
+    margin-right: 106px;
+  }
+
+  .waterProgressBarPercentages>li:nth-child(2) {
+    margin-right: 78px;
+  }
+
+  .waterProgressBarTitle {
+    font-size: 15px;
+    line-height: 1.49333;
+  }
+}
+
+@media (min-width: 1440px) {
+  .waterProgressBarContainer {
+    width: 295px;
+    height: 106px;
+    margin-top: 215px;
+    margin-left: 156px;
+  }
+}

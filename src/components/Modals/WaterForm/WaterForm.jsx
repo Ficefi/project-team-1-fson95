@@ -5,16 +5,23 @@ import { useState } from 'react';
 import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useDispatch } from 'react-redux';
+import { addWater, updateWater } from '../../../redux/water/operations';
+import { toast } from 'react-toastify';
 
 const waterSchema = Yup.object().shape({
-  waterMl: Yup.number()
+  amountWater: Yup.number()
     .required('Required')
     .positive('Water amount must be positive'),
+  time: Yup.string().required('Required'),
 });
 
-const WaterForm = () => {
-  const { handleSubmit } = useForm({
+const WaterForm = ({ typeOperation, defaultValues, onClose }) => {
+  const dispatch = useDispatch();
+
+  const { register, handleSubmit } = useForm({
     resolver: yupResolver(waterSchema),
+    defaultValues,
   });
 
   const [waterSetValue, setWaterSetValue] = useState(50);
@@ -34,8 +41,28 @@ const WaterForm = () => {
     setWaterSetValue(parseInt(value) || 0);
   };
 
+  const submit = async (data) => {
+    const newData = {
+      amountWater: data.amountWater,
+      time: data.time,
+    };
+
+    if (typeOperation === 'addWater') {
+      await dispatch(addWater(newData));
+      toast.success('Added, cool!');
+    } else {
+      await dispatch(updateWater({ _id: defaultValues._id, ...newData }));
+      toast.success('Updated, cool!');
+    }
+    onClose();
+  };
+
   return (
-    <form className={css.form} onSubmit={handleSubmit()} autoComplete="off">
+    <form
+      className={css.form}
+      onSubmit={handleSubmit(submit)}
+      autoComplete="off"
+    >
       <div className={css.box_amount}>
         <p className={css.box_amount_text}>Amount of water:</p>
         <div className={css.box_button}>
@@ -57,16 +84,15 @@ const WaterForm = () => {
         </div>
       </div>
       <div className={css.box_select}>
-        <label htmlFor="appt" className={css.box_select_text}>
+        <label htmlFor="time" className={css.box_select_text}>
           Recording time:
         </label>
         <input
           type="time"
           className={css.input_time}
-          id="appt"
-          name="appt"
-          min="09:00"
-          max="18:00"
+          id="time"
+          name="time"
+          {...register('time')}
           required
         />
       </div>
@@ -76,7 +102,8 @@ const WaterForm = () => {
         </label>
         <input
           type="number"
-          name="waterMl"
+          name="amountWater"
+          {...register('amountWater')}
           step="50"
           min="0"
           value={waterSetValue}
