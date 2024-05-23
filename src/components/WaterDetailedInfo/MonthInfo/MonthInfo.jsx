@@ -16,6 +16,7 @@ import css from './MonthInfo.module.css';
 import clsx from 'clsx';
 import { useSelector } from 'react-redux';
 import { getPersistedToken } from '/src/redux/auth/operations.js';
+import { calculateDailyWater } from '../calculateDailyWater';
 
 const MonthInfo = () => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -50,14 +51,6 @@ const MonthInfo = () => {
   }, []);
 
   let waters = 1000
-
-  function calculateDailyWater(waterRate, waters) {
-    if (waterRate === 0) {
-      return 0;
-    }
-    let waterday = (waters / waterRate) * 100;
-    return waterday
-  }
 
   let watered = calculateDailyWater(waterRate, waters);
 
