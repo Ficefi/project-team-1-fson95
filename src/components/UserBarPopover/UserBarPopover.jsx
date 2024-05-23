@@ -4,7 +4,7 @@ import sprite from '../../assets/svg/sprite.svg';
 import { createPortal } from 'react-dom';
 import { useEffect, useRef, useState } from 'react';
 import UserSettingsModal from '../Modals/UserSettingsModal/UserSettingsModal';
-import LogOutModal from '../Modals/LogOutModal/LogoutModal';
+import LogOutModal from '../Modals/LogOutModal/LogOutModal';
 //1 - знайти місцеположення кнопки and react on viewport size change
 //2 - змістити поповер на потрібне місце
 // 3 - клік поза межами поповера або кнопки - закрити
@@ -78,7 +78,7 @@ const UserBarPopover = ({ buttonRef, isOpened, toggle }) => {
           <div
             className={css.popover_container}
             style={{
-              transform: `translate(${left}px, ${bottom}px)`,
+              transform: `translate(${left}px, ${bottom + window.scrollY}px)`,
             }}
             ref={popoverRef}
           >

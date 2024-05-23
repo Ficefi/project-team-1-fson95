@@ -6,16 +6,11 @@ import AddWaterBtn from './AddWaterBtn';
 import WaterList from '../WaterItem/WaterList';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchWaterByDay } from '../../redux/water/waterOperation';
+import { selectSelectedDate } from '../../redux/dailyInfo/dailyInfoSlice';
 
 const DailyInfo = () => {
   const dispatch = useDispatch();
-
-  const selectedDate = useSelector((state) => state.dailyInfo.selectedDate);
-  //user
-
-  const handleClick = (date) => {
-    dispatch(fetchWaterByDay({ date }));
-  };
+  const selectedDate = useSelector(selectSelectedDate);
 
   useEffect(() => {
     if (selectedDate) {
@@ -31,10 +26,10 @@ const DailyInfo = () => {
             ? format(selectedDate, 'dd, MMMM')
             : `Today ${format(new Date(), 'dd MMMM')}`}
         </div>
-        <AddWaterBtn onSelectedDate={handleClick} />
+        <AddWaterBtn />
       </div>
       <div className={css.water_list}>
-        <WaterList onSelectedDate={handleClick} />
+        <WaterList />
       </div>
     </div>
   );

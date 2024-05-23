@@ -9,6 +9,8 @@ import { PrivateRoute } from './components/PrivateRoute';
 import SharedLayout from './components/SharedLayout/SharedLayout';
 import { userSlice } from './redux/user/userSlice';
 
+// import UserPanel from './components/UserPanel/UserPanel';
+
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage'));
@@ -53,5 +55,12 @@ const App = () => {
     </Routes>
   );
 };
-
 export default App;
+// export default function App() {
+//   return (
+//     <div>
+//       <div style={{ height: '300px' }}></div>
+//       <UserPanel />;<div style={{ height: '400px' }}></div>
+//     </div>
+//   );
+// }

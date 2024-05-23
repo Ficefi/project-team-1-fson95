@@ -19,7 +19,10 @@ const dailyInfoSlice = createSlice({
     },
     setSelectedDate(state, action) {
       // дія для встановлення обраної дати
-      state.selectedDate = action.payload;
+      state.selectedDate =
+        action.payload instanceof Date
+          ? action.payload.toISOString()
+          : action.payload;
     },
   },
 });

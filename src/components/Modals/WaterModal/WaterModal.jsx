@@ -1,15 +1,9 @@
 import css from './WaterModal.module.css';
 
 import CustomModal from '../CustomModal/CustomModal';
-import WaterForm from '../WaterForm/WaterForm';
+import { CreateWaterForm, UpdateWaterForm } from '../WaterForm/WaterForm';
 
-export const WaterModal = ({
-  typeOperation,
-  isOpen,
-  onClose,
-  onSubmit,
-  defaultValues,
-}) => {
+export const WaterModal = ({ typeOperation, isOpen, onClose, data }) => {
   return (
     <>
       <CustomModal isOpen={isOpen} onClose={onClose}>
@@ -25,11 +19,11 @@ export const WaterModal = ({
               <h3 className={css.subtitle}>Correct entered data:</h3>
             </div>
           )}
-          <WaterForm
-            onSubmit={onSubmit}
-            defaultValues={defaultValues}
-            onClose={onClose}
-          />
+          {typeOperation === 'addWater' ? (
+            <CreateWaterForm onSuccess={onClose} />
+          ) : (
+            <UpdateWaterForm data={data} onSuccess={onClose} />
+          )}
         </div>
       </CustomModal>
     </>

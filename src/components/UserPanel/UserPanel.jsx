@@ -3,14 +3,14 @@ import sprite from '../../assets/svg/sprite.svg';
 import testAvatar from '../../assets/test-avatar.jpg';
 import { useRef, useState } from 'react';
 import UserBarPopover from '../UserBarPopover/UserBarPopover';
-import { useSelector } from 'react-redux';
-import { userSlice } from '../../redux/user/userSlice';
+//import { useSelector } from 'react-redux';
+//import { userSlice } from '../../redux/user/userSlice';
 
 const UserPanel = () => {
   const buttonRef = useRef(null);
   const [isUserBarOpen, setIsUserBarOpen] = useState(false);
-  const userName = useSelector(userSlice.selectors.name);
-  const avatarURL = useSelector(userSlice.selectors.avatarURL);
+  const userName = 'test'; // useSelector(userSlice.selectors.name);
+  const avatarURL = null; // useSelector(userSlice.selectors.avatarURL);
   const toggleUserBar = () => {
     setIsUserBarOpen(!isUserBarOpen);
   };
@@ -37,6 +37,7 @@ const UserPanel = () => {
           />
         </svg>
       </button>
+
       <UserBarPopover
         buttonRef={buttonRef}
         isOpened={isUserBarOpen}

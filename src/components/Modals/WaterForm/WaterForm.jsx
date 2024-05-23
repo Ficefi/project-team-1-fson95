@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -6,7 +6,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import css from './WaterForm.module.css';
 import { BiMinus } from 'react-icons/bi';
 import { AiOutlinePlus } from 'react-icons/ai';
-import { addWater } from '../../../redux/water/waterOperation';
+import { addWater, updateWater } from '../../../redux/water/waterOperation';
+import { selectSelectedDate } from '../../../redux/dailyInfo/dailyInfoSlice';
+import { memo, useMemo } from 'react';
+import { format } from 'date-fns';
 
 const waterSchema = Yup.object().shape({
   consumedVolume: Yup.number()
@@ -15,15 +18,28 @@ const waterSchema = Yup.object().shape({
   time: Yup.string().required(),
 });
 
-const WaterForm = () => {
-  const dispatch = useDispatch();
+// date = '2024-01-10T18:00:00'
+// time = '18:00:00'
+// input = '18:00'
 
+const defaultValues = {
+  consumedVolume: 250,
+};
+
+const transformData = (data) => {
+  const { date, consumedVolume = defaultValues.consumedVolume } = data;
+  const time = format(new Date(date), 'HH:mm');
+  return {
+    consumedVolume,
+    time,
+  };
+};
+
+// consumedVolume, date
+const WaterForm = ({ data, onSubmit }) => {
   const { handleSubmit, setValue, register, watch } = useForm({
     resolver: yupResolver(waterSchema),
-    defaultValues: {
-      consumedVolume: 50,
-      time: new Date().getHours(),
-    },
+    defaultValues: transformData(data),
   });
   const consumedVolume = watch('consumedVolume');
   const plusWater = () => {
@@ -33,13 +49,19 @@ const WaterForm = () => {
     const newValue = consumedVolume - 50;
     setValue('consumedVolume', newValue < 0 ? 0 : newValue);
   };
-  const onSubmit = (data) => {
-    dispatch(addWater(data));
-  };
   return (
     <form
       className={css.form}
-      onSubmit={handleSubmit(onSubmit, (e) => console.log(e))}
+      onSubmit={handleSubmit(
+        (updData) => {
+          const { time, ...rest } = updData;
+          const [hours, minutes] = time.split(':');
+          const date = new Date(data.date);
+          date.setHours(hours, minutes);
+          onSubmit({ ...rest, date });
+        },
+        (e) => console.log(e)
+      )}
       autoComplete="off"
     >
       <div className={css.box_amount}>
@@ -96,4 +118,29 @@ const WaterForm = () => {
   );
 };
 
-export default WaterForm;
+export const UpdateWaterForm = memo(function UpdateWaterForm({
+  data,
+  onSuccess,
+}) {
+  const dispatch = useDispatch();
+  const submit = async (updData) => {
+    await dispatch(updateWater({ _id: data._id, ...updData }));
+    onSuccess?.();
+  };
+  return <WaterForm data={data} onSubmit={submit} />;
+});
+
+export const CreateWaterForm = memo(function CreateWaterForm({ onSuccess }) {
+  const selectedDate = useSelector(selectSelectedDate);
+  const dispatch = useDispatch();
+  const submit = async (data) => {
+    await dispatch(addWater(data));
+    onSuccess?.();
+  };
+  const date = useMemo(() => {
+    const date = new Date(selectedDate);
+    date.setHours(9, 0);
+    return date;
+  }, [selectedDate]);
+  return <WaterForm data={{ date }} onSubmit={submit} />;
+});

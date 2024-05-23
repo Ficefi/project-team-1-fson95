@@ -3,12 +3,8 @@ import sprite from '../../assets/svg/sprite.svg';
 import { useState } from 'react';
 import DeleteWaterModal from '../Modals/DeleteWaterModal/DeleteWaterModal';
 import WaterModal from '../Modals/WaterModal/WaterModal';
-import { updateWater } from '../../redux/water/waterOperation';
-import { useDispatch } from 'react-redux';
 
-export default function WaterItem({ _id, dose, date }) {
-  const dispatch = useDispatch();
-
+export default function WaterItem({ _id, consumedVolume, date }) {
   const hours = date.getHours();
   const minutes = date.getMinutes();
   const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes
@@ -29,11 +25,6 @@ export default function WaterItem({ _id, dose, date }) {
     setModalType(null);
   };
 
-  const handleEditSubmit = (formData) => {
-    dispatch(updateWater({ _id, data: formData }));
-    closeModal();
-  };
-
   return (
     <div className={css.water_card_container}>
       <svg className={css.water_icon}>
@@ -41,7 +32,9 @@ export default function WaterItem({ _id, dose, date }) {
       </svg>
       <div className={css.info}>
         <div className={css.dose}>
-          {dose >= 1000 ? `${(dose / 1000).toFixed(2)} L` : `${dose} ml`}
+          {consumedVolume >= 1000
+            ? `${(consumedVolume / 1000).toFixed(2)} L`
+            : `${consumedVolume} ml`}
         </div>
         <div className={css.date}>{formattedTime} AM</div>
       </div>
@@ -58,10 +51,10 @@ export default function WaterItem({ _id, dose, date }) {
       </div>
       {isModalOpen && modalType === 'editWater' && (
         <WaterModal
+          data={{ _id, consumedVolume, date }}
           typeOperation="editWater"
           isOpen={isModalOpen}
           onClose={closeModal}
-          onSubmit={handleEditSubmit}
         />
       )}
       {isModalOpen && modalType === 'deleteWater' && (

@@ -1,18 +1,19 @@
 import css from './DailyInfo.module.css';
 import sprite from '../../assets/svg/sprite.svg';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import WaterModal from '../Modals/WaterModal/WaterModal';
-import { useDispatch } from 'react-redux';
-import { addWater } from '../../redux/water/waterOperation';
 
 const AddWaterBtn = () => {
   const [isModalOpen, setIsOpenModal] = useState(false);
   const [typeOperation, setTypeOperation] = useState('addWater');
-  const dispatch = useDispatch();
+
   const openModal = (type) => {
     setTypeOperation(type);
     setIsOpenModal(true);
   };
+  const close = useCallback(() => {
+    setIsOpenModal(false);
+  }, []);
   return (
     <>
       <div
@@ -29,13 +30,9 @@ const AddWaterBtn = () => {
       </div>
 
       <WaterModal
-        onSubmit={(data) => {
-          dispatch(addWater(data));
-          setIsOpenModal(false);
-        }}
         typeOperation={typeOperation}
         isOpen={isModalOpen}
-        onClose={() => setIsOpenModal(false)}
+        onClose={close}
       />
     </>
   );
