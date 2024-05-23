@@ -110,9 +110,9 @@ export const getPersistedToken = (state) => state.auth.token;
 
 export const updateUserSettings = createAsyncThunk(
   'auth/updateSettings',
-  async (formData, thunkAPI) => {
+  async (values, thunkAPI) => {
     try {
-      const res = await axios.put('/users/update', formData);
+      const res = await axios.put('/users/update', values);
       console.log('Settings updated successfully');
       return res.data;
     } catch (error) {
