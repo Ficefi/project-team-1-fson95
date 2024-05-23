@@ -7,22 +7,26 @@
   padding: 16px 16px;
   margin: 0 auto;
 }
+
 @media screen and (min-width: 768px) {
   .containerError {
     min-width: 768px;
     max-width: 1440px;
   }
 }
+
 @media screen and (min-width: 1440px) {
   .containerError {
     max-width: 1440px;
   }
 }
+
 .imgError {
   display: block;
   max-width: 100%;
   height: auto;
 }
+
 @media screen and (min-width: 768px) {
   .imgError {
     min-width: 350px;
@@ -42,9 +46,11 @@
   font-weight: 600;
   font-family: 'Gilroy-Bold', sans-serif;
 }
+
 .btn:hover {
   background-color: #87d28d;
 }
+
 @media screen and (min-width: 768px) {
   .btn {
     width: 436px;

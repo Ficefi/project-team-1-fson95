@@ -136,7 +136,6 @@
   .main_daily_container {
     width: 100%;
     max-width: 704px;
-    height: 738px;
   }
 
   .daily_info_container {
@@ -150,6 +149,5 @@
   .main_daily_container {
     width: 100%;
     max-width: 672px;
-    height: 736px;
   }
 }

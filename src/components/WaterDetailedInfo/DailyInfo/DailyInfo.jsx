@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import UserSettingsModal from '../../Modals/UserSettingsModal/UserSettingsModal';
-import LogOutModal from '../../Modals/LogOutModal/LogoutModal';
+import LogOutModal from '../../Modals/LogOutModal/LogOutModal';
 import css from './DailyInfo.module.css';
 import AddWaterBtn from './AddWaterBtn';
 import WaterList from './WaterList';

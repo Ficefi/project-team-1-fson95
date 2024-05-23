@@ -10,10 +10,11 @@
 }
 
 .closedModal {
-position: absolute;
-top: 20px;
-right: 20px;
-color: var(--main-text);
+    position: absolute;
+    cursor: pointer;
+    top: 20px;
+    right: 20px;
+    color: var(--main-text);
 }
 
 
@@ -27,4 +28,5 @@ color: var(--main-text);
     .modalBox {
         padding: 40px;
         max-width: 518px;
-    }}
+    }
+}
