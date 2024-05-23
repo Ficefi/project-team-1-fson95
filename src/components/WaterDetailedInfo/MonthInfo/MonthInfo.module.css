@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-   margin: auto;
+    margin-top: -20px;
 }
 
 .block {
@@ -14,24 +14,31 @@
 .container {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 24px;
 }
 
 .changermonth {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 16px;
 }
 
 .blockinfomonth {
     display: flex;
-    gap: 58px; 
+    gap: 115px;    
     align-items: center;
 }
 
 .blockdays {
     display: flex;
     justify-content: center;
+   width: 320px;
+}
+
+.navicon {
+    width: 8px;
+    height: 12px;
+    stroke-width: 80px;
+stroke: var(--main);
 }
 
 .monthtitle {
@@ -44,7 +51,6 @@ color: var(--main);
 
 .monthname {
     font-family: var(--font-family);
-font-style: italic;
 font-weight: 700;
 font-size: 12px;
 line-height: 129%;
@@ -58,7 +64,8 @@ color: var(--main);
     flex-wrap: wrap;
     column-gap: 18px;
     row-gap: 20px;
-    padding: 0 8px;
+    flex-direction: row;
+    justify-content: flex-start;
 }
 
 .btnday {
@@ -73,7 +80,7 @@ color: var(--main);
         border: transparent;
         font-family: var(--font-family);
 font-weight: 700;
-font-size: 14px;
+font-size: 16px;
 line-height: 129%;
 letter-spacing: -0.01em;
 color: var(--main);
@@ -100,9 +107,17 @@ margin: 6px 3px;
     height: 20px;
 }
 
+.btnday:hover,
+.btnday:focus {
+    font-weight: 700;
+line-height: 150%;
+letter-spacing: -0.01em;
+color: #9BE1A0 !important;
+background: var(--main) !important;
+}
+
 .selectedDate {
 font-weight: 700;
-font-size: 16px;
 line-height: 150%;
 letter-spacing: -0.01em;
 color: #9BE1A0 !important;
@@ -110,19 +125,23 @@ background: var(--main) !important;
 }
 
 @media (min-width: 768px) {
+    .blockdays {
+        width: 100%;
+    }
     .blockinfomonth {
-        gap: 343px;
+        gap: 390px;
     }
     .btnday {
 padding: 7px 15px;
 width: 38px;
 height: 38px;
-font-size: 16px;
+font-size: 20px;
 line-height: 150%;
     }
     .weekContainer {
         column-gap: 48px;
     row-gap: 15px;
+    padding: 0;
     }
     .completed {
 font-size: 12px;
@@ -152,11 +171,19 @@ line-height: 114%;
 }
 
 @media (min-width: 1440px) {
+    .btnday {
+        font-size: 22px;
+    }
     .blockinfomonth {
-        gap: 310px;
+        gap: 340px;
     }
     .weekContainer {
         column-gap: 43px;
     row-gap: 15px;
+    padding: 0;
+    }
+    .navicon {
+        width: 18px;
+        height: 18px;
     }
 }

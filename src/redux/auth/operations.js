@@ -105,3 +105,20 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
+
+export const getPersistedToken = (state) => state.auth.token;
+
+export const updateUserSettings = createAsyncThunk(
+  'auth/updateSettings',
+  async (formData, thunkAPI) => {
+    try {
+      const res = await axios.put('/users/update', formData);
+      console.log('Settings updated successfully');
+      return res.data;
+    } catch (error) {
+      toast.error(error.response.data.message);
+      console.log('Failed to update settings');
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

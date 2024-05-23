@@ -1,5 +1,5 @@
 import css from './WaterItem.module.css';
-import sprite from '../../assets/svg/sprite.svg';
+import sprite from '../../../public/svg/sprite.svg';
 
 export default function WaterItem({ dose, date }) {
   const hours = date.getHours();
