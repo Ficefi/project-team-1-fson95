@@ -24,7 +24,6 @@ const DailyInfo = () => {
       <div className={css.water_list}>
         <WaterList />
       </div>
-      <div>Calendar</div>
 
       {isUserSettingsOpen && (
         <UserSettingsModal toggleUserSettings={toggleUserSettings} />
