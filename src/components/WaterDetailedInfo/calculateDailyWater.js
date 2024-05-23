@@ -1,5 +1,5 @@
 export function calculateDailyWater(waterRate, waters) {
-    if (waterRate === 0) {
+    if (waterRate === 0 || waterRate === null) {
       return 0;
     }
     let waterday = (waters / waterRate) * 100;
