@@ -2,9 +2,9 @@ import { useDispatch } from 'react-redux';
 import { signUp } from '../../redux/auth/operations';
 import { useId, useState } from 'react';
 import { useForm } from 'react-hook-form';
-
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import clsx from 'clsx';
 import css from './SignUpForm.module.css';
 
 const RegisterSchema = Yup.object().shape({
@@ -25,6 +25,11 @@ const SignUpForm = () => {
   const dispatch = useDispatch();
 
   const [showPassword, setShowPassword] = useState(false);
+  const [isFieldActivated, setIsFieldActivated] = useState({
+    email: false,
+    password: false,
+    repeatPassword: false,
+  });
 
   const emailFieldId = useId();
   const passwordFieldId = useId();
@@ -35,6 +40,7 @@ const SignUpForm = () => {
     handleSubmit,
     formState: { errors },
     reset,
+    getValues,
   } = useForm({
     resolver: yupResolver(RegisterSchema),
     defaultValues: initialValues,
@@ -55,6 +61,10 @@ const SignUpForm = () => {
     setShowPassword(!showPassword);
   };
 
+  const handleActivate = (field) => {
+    setIsFieldActivated({ ...isFieldActivated, [field]: !!getValues(field) });
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={css.signUpFields}>
       <div className={css.signUpFormInput}>
@@ -65,10 +75,12 @@ const SignUpForm = () => {
           type="text"
           id={emailFieldId}
           placeholder="Enter your email"
-          className={`${css.inputField} ${
-            errors.email ? css.inputFieldError : ''
-          }`}
+          className={clsx(css.inputField, {
+            [css.inputFieldError]: errors.email,
+            [css.inputFieldActivated]: isFieldActivated.email,
+          })}
           {...register('email')}
+          onBlur={() => handleActivate('email')}
         />
         {errors.email && (
           <span className={css.errMessage}>{errors.email.message}</span>
@@ -82,10 +94,12 @@ const SignUpForm = () => {
           type={showPassword ? 'text' : 'password'}
           id={passwordFieldId}
           placeholder="Enter your password"
-          className={`${css.inputField} ${
-            errors.password ? css.inputFieldError : ''
-          }`}
+          className={clsx(css.inputField, {
+            [css.inputFieldError]: errors.password,
+            [css.inputFieldActivated]: isFieldActivated.password,
+          })}
           {...register('password')}
+          onBlur={() => handleActivate('password')}
         />
         <button
           type="button"
@@ -94,13 +108,12 @@ const SignUpForm = () => {
         >
           <svg className={css.eyeIcon} width="20" height="20">
             <use
-              href={`/src/assets/svg/sprite.svg#${
+              href={`/svg/sprite.svg#${
                 showPassword ? 'icon-eye' : 'icon-eye-off'
               }`}
             ></use>
           </svg>
         </button>
-
         {errors.password && (
           <span className={css.errMessage}>{errors.password.message}</span>
         )}
@@ -113,10 +126,12 @@ const SignUpForm = () => {
           type={showPassword ? 'text' : 'password'}
           id={repeatPasswordFieldId}
           placeholder="Repeat password"
-          className={`${css.inputField} ${
-            errors.repeatPassword ? css.inputFieldRepeatPasswordError : ''
-          }`}
+          className={clsx(css.inputField, {
+            [css.inputFieldError]: errors.repeatPassword,
+            [css.inputFieldActivated]: isFieldActivated.repeatPassword,
+          })}
           {...register('repeatPassword')}
+          onBlur={() => handleActivate('repeatPassword')}
         />
         <button
           type="button"
@@ -125,7 +140,7 @@ const SignUpForm = () => {
         >
           <svg className={css.eyeIcon} width="20" height="20">
             <use
-              href={`/src/assets/svg/sprite.svg#${
+              href={`/svg/sprite.svg#${
                 showPassword ? 'icon-eye' : 'icon-eye-off'
               }`}
             ></use>

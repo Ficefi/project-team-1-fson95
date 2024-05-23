@@ -4,6 +4,8 @@
     border-radius: 30px;
     padding: 40px 20px;
     background-color: var(--light_gray);
+    min-width: 290px;
+    max-width: 350px;
 }
 
 @media only screen and (min-width: 768px) {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   format,
   startOfWeek,
@@ -13,8 +13,9 @@ import {
 } from 'date-fns';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import css from './MonthInfo.module.css';
-import sprite from '../../../../public/svg/sprite.svg';
 import clsx from 'clsx';
+import { useSelector } from 'react-redux';
+import { getPersistedToken } from '/src/redux/auth/operations.js';
 
 const MonthInfo = () => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -83,42 +84,68 @@ const MonthInfo = () => {
 
     return (
       <>
-        <div>
           <div key={allWeeks.toString()} className={css.weekContainer}>
             {allWeeks}
           </div>
-        </div>
       </>
     );
   };
 
+  const [waterRate, setWaterRate] = useState('');
+  const state = useSelector((state) => state);
+  const token = getPersistedToken(state);
+
+  useEffect(() => {
+    const fetchWaterRate = async () => {
+      try {
+        const response = await fetch(
+          'https://aquatrack-api.onrender.com/users/current',
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setWaterRate(data.waterRate);
+      } catch (error) {
+        console.error('Error fetching water rate:', error);
+      }
+    };
+
+    fetchWaterRate();
+  }, []);
+
+  console.log(waterRate)
+
+  const water = useSelector(state => state);
+  console.log(water)
+
   return (
-    <section className={css.section}>
+    <div className={css.section}>
       <div className={css.block}>
         <div className={css.container}>
           <div className={css.blockinfomonth}>
             <h2 className={css.monthtitle}>Month</h2>
             <div className={css.changermonth}>
               <AiOutlineLeft
-                className="navIcon"
+                className={css.navicon}
                 onClick={() => setActiveDate(subMonths(activeDate, 1))}
               />
               <span className={css.monthname}>{getHeader()}</span>
               <AiOutlineRight
-                className="navIcon"
+                className={css.navicon}
                 onClick={() => setActiveDate(addMonths(activeDate, 1))}
               />
             </div>
           </div>
-          <div className={css.icon}>
-            <svg className={css.svg}>
-              <use href={sprite + '#icon-pie-chart-02'}></use>
-            </svg>
-          </div>
         </div>
         <div className={css.blockdays}>{getDates()}</div>
       </div>
-    </section>
+    </div>
   );
 };
 
