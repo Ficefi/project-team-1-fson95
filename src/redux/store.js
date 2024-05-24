@@ -28,6 +28,7 @@ export const store = configureStore({
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        ignoredPaths: ['auth.current.payload.headers'], // Ігноруємо цей шлях
       },
     }),
 });

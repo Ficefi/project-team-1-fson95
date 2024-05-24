@@ -1,7 +1,6 @@
 #range-slider .range-slider__thumb[data-disabled] {
   z-index: 1;
   border-radius: 4px;
-  background: var(--background);
   height: 6px;
   border: 0;
   width: 0;
@@ -14,7 +13,7 @@
   border-radius: 9px;
   width: 174px;
   height: 6px;
-  background-color: var(--background);
+  background-color: #e1e0e9;
 }
 
 #range-slider > .range-slider__range {
