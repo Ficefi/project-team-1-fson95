@@ -28,7 +28,7 @@ const CustomModal = ({ isOpen, onClose, children }) => {
   return (
     <Modal
       isOpen={isOpen}
-      onClose={onClose}
+      onRequestClose={onClose}
       style={customStyles}
       shouldCloseOnOverlayClick={true}
       shouldCloseOnEsc={true}
