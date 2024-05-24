@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
+
 import { useSelector } from 'react-redux';
+
 import './WaterProgressBar.css';
 import RangeSlider from 'react-range-slider-input';
 import 'react-range-slider-input/dist/style.css';

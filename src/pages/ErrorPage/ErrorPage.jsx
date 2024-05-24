@@ -1,9 +1,7 @@
-import { ErrorForErrorPage } from "../../components/Error/Error"
+import { ErrorForErrorPage } from '../../components/Error/Error';
 
 const ErrorPage = () => {
-  return (
-    <ErrorForErrorPage/>
-  );
+  return <ErrorForErrorPage />;
 };
 
 export default ErrorPage;

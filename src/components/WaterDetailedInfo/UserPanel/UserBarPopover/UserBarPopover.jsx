@@ -1,4 +1,5 @@
 //UserBarPopover.jsx
+
 import { createPortal } from 'react-dom';
 import { useEffect, useRef, useState } from 'react';
 import css from './UserBarPopover.module.css';

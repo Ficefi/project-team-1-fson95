@@ -25,6 +25,7 @@ function AddWaterBtn() {
         <FiPlus />
         Add water
       </button>
+
       <WaterModal
         typeOperation="addWater"
         defaultValues={waterData}

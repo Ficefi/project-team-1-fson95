@@ -11,6 +11,7 @@ import { toast } from 'react-toastify';
 
 const waterSchema = Yup.object().shape({
   consumedVolume: Yup.number()
+
     .required('Required')
     .positive('Water amount must be positive'),
   time: Yup.string().required('Required'),

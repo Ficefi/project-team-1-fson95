@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import {
   signUp,
   signIn,
@@ -7,6 +8,7 @@ import {
   updateUserSettings,
   getCurrentInfo,
 } from './operations';
+
 
 const initialState = {
   user: {
@@ -61,7 +63,9 @@ const authSlice = createSlice({
       .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;
       })
+
       .addCase(updateUserSettings.pending, (state) => {
+
         state.isRefreshing = true;
       })
       .addCase(updateUserSettings.fulfilled, (state, action) => {
@@ -69,7 +73,9 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
+
       .addCase(updateUserSettings.rejected, (state) => {
+
         state.isRefreshing = false;
 
         // chek

@@ -49,6 +49,8 @@
   letter-spacing: -0.01em;
   color: var(--main);
 }
+
+
 .icon_add_water_btn {
   width: 30px;
   height: 30px;
@@ -88,6 +90,7 @@
   width: 8px;
   background-color: var(--main-white);
 }
+
 .scroller::-webkit-scrollbar-thumb {
   border-radius: 9px;
   width: 235px;
@@ -108,18 +111,26 @@
   .main_daily_container {
     width: 100%;
   }
+
+
+
   .daily_info_container {
     max-width: 100%;
   }
 }
+
+
+
 /* стає адаптивною з 375 px;*/
 @media only screen and (min-width: 376px) and (max-width: 768px) {
   .main_daily_container {
     max-width: 100%;
   }
+
   .scroller {
     width: 100%;
   }
+
   .daily_info_container {
     width: 100%;
   }
@@ -131,6 +142,9 @@
     width: 100%;
     max-width: 704px;
   }
+
+
+
   .daily_info_container {
     width: 100%;
     max-width: 640px;
@@ -143,4 +157,6 @@
     width: 100%;
     max-width: 672px;
   }
+
 }
+

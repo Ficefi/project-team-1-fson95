@@ -21,7 +21,7 @@
   cursor: pointer;
 }
 
-.addWater_btn > svg {
+.addWater_btn>svg {
   width: 16px;
   height: 16px;
 }
@@ -35,11 +35,13 @@
     margin-left: 171px;
   }
 }
+
 @media (min-width: 768px) {
   .addWater_btn {
     margin-left: 462px;
   }
 }
+
 @media (min-width: 768px) {
   .addWater_btn {
     margin-top: 26px;
@@ -50,7 +52,8 @@
     font-size: 16px;
     padding: 18px 30px;
   }
-  .addWater_btn > svg {
+
+  .addWater_btn>svg {
     width: 24px;
     height: 24px;
   }
@@ -60,7 +63,13 @@
   .addWater_btn {
     margin-left: 430px;
     margin-top: 56px;
+
   }
+  .addWater_btn {
+    margin-top: 56px;
+
+  }
+
   .addWater_btn {
     margin-top: 56px;
   }

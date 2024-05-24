@@ -1,5 +1,6 @@
 import css from './DailyInfo.module.css';
 import sprite from '../../../../public/svg/sprite.svg';
+
 import WaterModal from '../../Modals/WaterModal/WaterModal';
 import { useCallback, useState } from 'react';
 

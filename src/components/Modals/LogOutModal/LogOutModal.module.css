@@ -7,9 +7,9 @@
   color: var(--main);
 }
 
-.out_text {
-  font-weight: 400;
+.out_text {  
   font-size: 18px;
+  font-weight: 400;
   line-height: 1.33;
   letter-spacing: -0.01em;
   margin: 24px auto;
@@ -30,6 +30,8 @@
   border-radius: 30px;
   padding: 18px 58px;
   transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  box-shadow: inset 3px 3px 8px #8f8f8f, inset -3px -3px 8px #ffffff;
+  transform: all 250ms linear;
 }
 
 .out_button:hover {
@@ -37,3 +39,19 @@
   color: var(--main);
   cursor: pointer;
 }
+
+
+@media (min-width: 768px) {
+  .btn_container {
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .out_button {
+    border-radius: 15px;
+    padding: 14px;
+    width: 173px;
+    height: 46px;
+  }
+}
+

@@ -27,6 +27,7 @@ const DailyInfo = () => {
             ? format(selectedDate, 'dd, MMMM')
             : `Today ${format(new Date(), 'dd MMMM')}`}
         </div>
+
         <AddWaterBtn />
       </div>
       <div className={css.water_list}>

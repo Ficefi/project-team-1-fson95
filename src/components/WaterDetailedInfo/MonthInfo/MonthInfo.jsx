@@ -16,9 +16,6 @@ import css from './MonthInfo.module.css';
 import clsx from 'clsx';
 import { useSelector } from 'react-redux';
 import { getPersistedToken } from '/src/redux/auth/operations.js';
-import { calculateDailyWater } from '../calculateDailyWater';
-
-export let waters = 1000;
 
 const MonthInfo = () => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -83,6 +80,7 @@ const MonthInfo = () => {
                 watered === 100 ? { background: 'rgba(50, 63, 71, 0.2)' } : {}
               }
               // || waterRate > 100 ? {background: "#9BE1A0"} : {}
+
               className={clsx(css.btnday, {
                 [css.selectedDate]: isSameDay(currentDate, selectedDate),
               })}
