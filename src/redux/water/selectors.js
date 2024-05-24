@@ -5,4 +5,4 @@ export const selectIsError = (state) => state.userWater.isError;
 
 export const selectIsLoading = (state) => state.userWater.isLoading;
 
-export const selectWaterRate = (state) => state.auth.user.waterRate; // новий селектор
+export const selectWaterRate = (state) => state.auth.user.waterRate;

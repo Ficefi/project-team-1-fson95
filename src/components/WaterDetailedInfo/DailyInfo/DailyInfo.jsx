@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import UserSettingsModal from '../../Modals/UserSettingsModal/UserSettingsModal';
-import LogOutModal from '../../Modals/LogOutModal/LogoutModal';
+import LogOutModal from '../../Modals/LogOutModal/LogOutModal.jsx';
 import css from './DailyInfo.module.css';
 import AddWaterBtn from './AddWaterBtn';
 import WaterList from './WaterList';
@@ -24,7 +24,7 @@ const DailyInfo = () => {
       <div className={css.water_list}>
         <WaterList />
       </div>
-      
+
       {isUserSettingsOpen && (
         <UserSettingsModal toggleUserSettings={toggleUserSettings} />
       )}

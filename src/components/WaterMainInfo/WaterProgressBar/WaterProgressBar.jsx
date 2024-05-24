@@ -1,10 +1,15 @@
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import './WaterProgressBar.css';
 import RangeSlider from 'react-range-slider-input';
 import 'react-range-slider-input/dist/style.css';
-function WaterProgressBar() {
-  const progressValue = '25';
+import { calculateDailyWater } from '../../WaterDetailedInfo/calculateDailyWater';
+import { waters } from '../../WaterDetailedInfo/MonthInfo/MonthInfo';
+import { selectWaterRate } from '../../../redux/water/selectors';
 
+function WaterProgressBar() {
+  const waterRate = useSelector(selectWaterRate);
+  const progressValue = calculateDailyWater(waterRate, waters);
   useEffect(() => {
     const rangeElement = document.getElementById('range-slider');
     if (

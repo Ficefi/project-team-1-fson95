@@ -8,7 +8,7 @@ function WaterDailyNorma() {
     <div className={css.waterDailyNormaContainer}>
       <div className={css.waterDailyNormaText}>
         <h6 className={css.waterDailyNormaValue}>
-          {waterRate ? `${waterRate / 1000} L` : 'N/A'}
+          {waterRate ? `${waterRate / 1000} L` : '0 L'}
         </h6>
         <p className={css.waterDailyNormaTitle}>My daily norma</p>
       </div>
