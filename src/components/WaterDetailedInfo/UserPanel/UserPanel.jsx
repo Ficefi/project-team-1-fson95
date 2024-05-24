@@ -1,76 +1,43 @@
-import { useState, useRef, useEffect } from 'react';
-import UserBarPopover from './UserBarPopover/UserBarPopover';
 import css from './UserPanel.module.css';
 import sprite from '../../../../public/svg/sprite.svg';
+import UserBarPopover from './UserBarPopover/UserBarPopover';
+import { useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../../redux/auth/selectors';
 
-const UserPanel = ({ userName, userAvatarUrl }) => {
-  //стан відкрито/закрито
-  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
-  //посилання на ел. popover
-  const popoverRef = useRef(null);
+const UserPanel = () => {
   const buttonRef = useRef(null);
-
-  useEffect(() => {
-    //при кліку поза popover - закрити popover
-    function handleClickOutside(event) {
-      //чи popoverRef існує і чи кл. на кнопку і чи клікнуто поза ним
-      if (
-        popoverRef.current &&
-        !popoverRef.current.contains(event.target) &&
-        buttonRef.current !== event.target
-      ) {
-        setIsPopoverOpen(false);
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
-
-  const { name, avatarUrl } = {
-    name: 'Nadia',
-    avatarUrl:
-      'http://www.gravatar.com/avatar/d5690012bd1c581b35bbb21ddc8db935',
-  };
-  const togglePopover = () => {
-    setIsPopoverOpen(!isPopoverOpen);
+  const [isUserBarOpen, setIsUserBarOpen] = useState(false);
+  const { name, email, avatarURL } = useSelector(selectUser);
+  const alternativeName = email.split('@')[0];
+  const toggleUserBar = () => {
+    setIsUserBarOpen(!isUserBarOpen);
   };
 
   return (
     <div className={css.user_panel}>
       <div className={css.user_header}>
-        Hello, <span>{userName || name || 'User'}!</span>
+        Hello, <span>{name || alternativeName}!</span>
       </div>
-
-      <div className={css.popover_container} ref={popoverRef}>
-        <div
-          className={css.user_button}
-          id="toggleBtn"
-          onClick={togglePopover}
-          ref={buttonRef}
-        >
-          <span>{userName || name || 'User'}</span>
-          <img
-            className={css.user_avatar}
-            src={userAvatarUrl || avatarUrl}
-            alt="User Avatar"
+      <button
+        className={css.user_button}
+        ref={buttonRef}
+        onClick={toggleUserBar}
+      >
+        <span>{name || alternativeName}</span>
+        <img className={css.user_avatar} src={avatarURL} alt="User Avatar" />
+        <svg className={css.chevron_icon}>
+          <use
+            href={`${sprite}#icon-chevron-${isUserBarOpen ? 'up' : 'down'}`}
           />
-          <svg className={css.chevron_icon}>
-            <use
-              href={`${sprite}#icon-chevron-${isPopoverOpen ? 'up' : 'down'}`}
-            />
-          </svg>
-        </div>
+        </svg>
+      </button>
 
-        {isPopoverOpen && (
-          <UserBarPopover
-            id="mypopover"
-            toggleUserSetting={togglePopover}
-            toggleLogOut={togglePopover}
-          />
-        )}
-      </div>
+      <UserBarPopover
+        buttonRef={buttonRef}
+        isOpened={isUserBarOpen}
+        toggle={toggleUserBar}
+      />
     </div>
   );
 };

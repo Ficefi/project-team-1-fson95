@@ -15,7 +15,7 @@ function AddWaterBtn() {
   };
 
   const waterData = {
-    amount: null,
+    consumedVolume: null,
     time: null,
   };
 

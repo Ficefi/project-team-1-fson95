@@ -6,6 +6,11 @@
   --main-white: #ffffff;
   --accent: #9be1a0;
 }
+.water_list {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
 
 /* Mobile styles */
 .water_card_container {
@@ -75,6 +80,9 @@
 
 /* mobile: верстка гумова від 320 px до 375 px; */
 @media only screen and (min-width: 320px) and (max-width: 375px) {
+  .daily_info_container {
+    max-width: 100%;
+  }
 }
 
 /* Tablet styles стає адаптивною з 375 px;*/
@@ -94,6 +102,48 @@
   }
 }
 
+/* scroller */
+.scroller {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: flex;
+  box-sizing: border-box;
+  /* прив'язка відбувається по горизонталі (осі X) */
+  scroll-snap-type: x mandatory;
+  margin-bottom: 40px;
+  width: 640px;
+}
+
+/* .scroller scrollbar, */
+.scroller::-webkit-scrollbar {
+  border-radius: 9px;
+  width: 8px;
+  background-color: var(--main-white);
+}
+.scroller::-webkit-scrollbar-thumb {
+  border-radius: 9px;
+  width: 235px;
+  height: 8px;
+  background-color: var(--main);
+}
+
+.scroller > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+  cursor: pointer;
+}
+
+/* mobile: верстка гумова від 320 px до 375 px; */
+@media only screen and (min-width: 320px) and (max-width: 375px) {
+}
+/* стає адаптивною з 375 px;*/
+@media only screen and (min-width: 376px) and (max-width: 768px) {
+  .scroller {
+    width: 100%;
+  }
+}
 /* Desktop styles */
 @media only screen and (min-width: 769px) and (max-width: 1400px) {
   .dose {

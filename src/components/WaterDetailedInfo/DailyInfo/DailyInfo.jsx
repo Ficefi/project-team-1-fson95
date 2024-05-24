@@ -1,34 +1,37 @@
-//DailyInfo.jsx
-
-import { useState } from 'react';
-import UserSettingsModal from '../../Modals/UserSettingsModal/UserSettingsModal';
-import LogOutModal from '../../Modals/LogOutModal/LogOutModal.jsx';
+// DailyInfo.jsx
+import { useEffect } from 'react';
+import { format } from 'date-fns';
+import { useDispatch, useSelector } from 'react-redux';
+import { getWaterConsumedByDay } from '../../../redux/water/operations';
+// import { selectSelectedDate } from '../../redux/dailyInfo/dailyInfoSlice';
 import css from './DailyInfo.module.css';
 import AddWaterBtn from './AddWaterBtn';
-import WaterList from './WaterList';
+import WaterList from './WaterList/WaterList';
 
 const DailyInfo = () => {
-  // стан відкриття/закриття модальних вікон
-  const [isUserSettingsOpen, setIsUserSettingsOpen] = useState(false);
-  const [isLogOutOpen, setIsLogOutOpen] = useState(false);
-  // зміна станів
-  const toggleUserSettings = () => setIsUserSettingsOpen(!isUserSettingsOpen);
-  const toggleLogOut = () => setIsLogOutOpen(!isLogOutOpen);
+  const dispatch = useDispatch();
+  // const selectedDate = useSelector(selectSelectedDate);
+  const selectedDate = new Date();
+
+  useEffect(() => {
+    if (selectedDate) {
+      dispatch(getWaterConsumedByDay({ date: selectedDate }));
+    }
+  }, [selectedDate, dispatch]);
 
   return (
-    <div className={css.main_daily_container}>
+    <div>
       <div className={css.daily_info_container}>
-        <div className={css.date}>Today</div>
+        <div className={css.date}>
+          {selectedDate
+            ? format(selectedDate, 'dd, MMMM')
+            : `Today ${format(new Date(), 'dd MMMM')}`}
+        </div>
         <AddWaterBtn />
       </div>
       <div className={css.water_list}>
         <WaterList />
       </div>
-
-      {isUserSettingsOpen && (
-        <UserSettingsModal toggleUserSettings={toggleUserSettings} />
-      )}
-      {isLogOutOpen && <LogOutModal toggleLogOut={toggleLogOut} />}
     </div>
   );
 };
