@@ -8,10 +8,35 @@ export const addWater = createAsyncThunk(
   'water/addWater',
   async (values, thunkAPI) => {
     try {
+      console.log(values);
       const response = await axios.post('/water/', values);
       return response.data;
-    } catch (er) {
-      return thunkAPI.rejectWithValue(er.message);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getWaterConsumedByDay = createAsyncThunk(
+  'water/getWaterDay',
+  async (waterDate, thunkAPI) => {
+    try {
+      const response = await axios.get(`/water/day/${waterDate}`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getWaterConsumedByMonth = createAsyncThunk(
+  'water/getWaterMonth',
+  async (waterDate, thunkAPI) => {
+    try {
+      const response = await axios.get(`/water/month-stats/${waterDate}`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -22,8 +47,8 @@ export const deleteWater = createAsyncThunk(
     try {
       const response = await axios.delete(`/water/${waterId}`);
       return response.data;
-    } catch (er) {
-      return thunkAPI.rejectWithValue(er.message);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -37,8 +62,8 @@ export const updateWater = createAsyncThunk(
         time,
       });
       return response.data;
-    } catch (er) {
-      return thunkAPI.rejectWithValue(er.message);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

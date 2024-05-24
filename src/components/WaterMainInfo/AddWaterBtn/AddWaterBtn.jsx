@@ -14,13 +14,24 @@ function AddWaterBtn() {
     setIsModalOpen(false);
   };
 
+  const waterData = {
+    consumedVolume: null,
+    time: null,
+  };
+
   return (
     <div className={css.addWaterBtnContainer}>
       <button className={css.addWater_btn} type="button" onClick={openModal}>
         <FiPlus />
         Add water
       </button>
-      <WaterModal isOpen={isModalOpen} onClose={closeModal} />
+
+      <WaterModal
+        typeOperation="addWater"
+        defaultValues={waterData}
+        isOpen={isModalOpen}
+        onClose={closeModal}
+      />
     </div>
   );
 }

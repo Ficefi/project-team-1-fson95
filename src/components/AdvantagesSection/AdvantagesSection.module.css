@@ -1,27 +1,64 @@
-.container {
-  width: 343px;
-  height: 353px;
-  border-radius: 30px;
-  padding: 0 16px;
-  background-image: url(../../assets/AdvantagesSection/Photo_mobile.png);
-  background-size: cover;
+@media (min-width: 320px) {
+  .container {
+    width: 100%;
+    height: 353px;
+    border-radius: 30px;
+    padding: 0 16px;
+    background-image: url(/images/Baner/Baner@1x_mobile.webp);
+    background-size: cover;
+  }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 375px) {
+  .container {
+    width: 343px;
+    height: 353px;
+    border-radius: 30px;
+    padding: 0 16px;
+    background-image: url(/images/Baner/Baner@1x_mobile.webp);
+    background-size: cover;
+  }
+}
+
+@media screen and (min-resolution: 192dpi) {
+  .container {
+    background-image: url(/images/Baner/Baner@2x_mobile.webp);
+  }
+}
+
+@media screen and (min-width: 768px) {
   .container {
     width: 704px;
     height: 446px;
     padding: 0 32px;
-    background-image: url(../../assets/AdvantagesSection/Photo_tablet.png);
+    background-image: url(/images/Baner/Baner@1x_tablet.webp);
   }
 }
 
-@media (min-width: 1440px) {
+@media screen and (min-width: 768px) and (min-resolution: 192dpi) {
+  .container {
+    width: 704px;
+    height: 446px;
+    padding: 0 32px;
+    background-image: url(/images/Baner/Baner_2x_tablet.webp);
+  }
+}
+
+@media screen and (min-width: 1440px) {
   .container {
     width: 672px;
     height: 736px;
     padding: 0 32px;
-    background-image: url(../../assets/AdvantagesSection/Photo_desktop.png);
+    background-image: url(/images/Baner/Baner@1x_desktop.webp);
+  }
+}
+
+@media screen and (min-width: 1440px) and (min-resolution: 192dpi) {
+  .container {
+    width: 672px;
+    height: 736px;
+    padding: 0 32px;
+    background-image: url(/images/Baner/Baner_2x_desktop.webp);
   }
 }
 
@@ -106,7 +143,7 @@
   width: 66.94px;
   font-size: 12px;
   line-height: 14px;
-  font-weight: bold;
+  font-family: 'Poppins-bold', sans-serif;
   color: #323f47;
 }
 
@@ -166,7 +203,7 @@
   background-color: #323f47;
   border-radius: 30px;
   font-size: 8px;
-  font-weight: bold;
+  font-family: 'Poppins-bold', sans-serif;
   line-height: 8px;
   letter-spacing: -0.01em;
   color: #fff;
@@ -192,7 +229,7 @@
   background-color: #9be1a0;
   border-radius: 30px;
   font-size: 8px;
-  font-weight: bold;
+  font-family: 'Poppins-bold', sans-serif;
   line-height: 8px;
   letter-spacing: -0.01em;
   color: #323f47;
@@ -217,7 +254,7 @@
   border-radius: 30px;
   color: #323f47;
   font-size: 8px;
-  font-weight: bold;
+  font-family: 'Poppins-bold', sans-serif;
   line-height: 8px;
   letter-spacing: -0.01em;
 }

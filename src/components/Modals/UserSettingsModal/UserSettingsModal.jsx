@@ -1,7 +1,8 @@
 import CustomModal from './Modal/Modal';
 import UserSettingsForm from '../../UserSettingsForm/UserSettingsForm';
 import { AiOutlineClose } from 'react-icons/ai';
-// import IconX from './image/sprite.svg';
+import IconX from './image/sprite.svg';
+
 import css from './UserSettingsModal.module.css';
 
 export default function UserSettingsModal({ isOpen, isClose }) {

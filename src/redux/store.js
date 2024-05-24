@@ -10,7 +10,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { usersReducer } from './water/slice';
+import { waterReducer } from './water/slice';
 import { authReducer } from './auth/slice';
 
 const authPersistConfig = {
@@ -22,12 +22,13 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    userWater: usersReducer,
+    water: waterReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        ignoredPaths: ['auth.current.payload.headers'], // Ігноруємо цей шлях
       },
     }),
 });

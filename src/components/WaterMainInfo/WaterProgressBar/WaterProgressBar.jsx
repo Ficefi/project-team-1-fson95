@@ -1,15 +1,22 @@
 import { useEffect } from 'react';
+
+import { useSelector } from 'react-redux';
+
 import './WaterProgressBar.css';
 import RangeSlider from 'react-range-slider-input';
 import 'react-range-slider-input/dist/style.css';
-function WaterProgressBar() {
-  const progressValue = '25';
+import { calculateDailyWater } from '../../WaterDetailedInfo/calculateDailyWater';
+import { waters } from '../../WaterDetailedInfo/MonthInfo/MonthInfo';
+import { selectWaterRate } from '../../../redux/water/selectors';
 
+function WaterProgressBar() {
+  const waterRate = useSelector(selectWaterRate);
+  const progressValue = calculateDailyWater(waterRate, waters);
   useEffect(() => {
     const rangeElement = document.getElementById('range-slider');
     if (
-      (87 > progressValue && progressValue > 63) ||
-      (44 > progressValue && progressValue > 10)
+      (86 > progressValue && progressValue > 62) ||
+      (44 > progressValue && progressValue > 8)
     ) {
       rangeElement.style.setProperty('--thumb-color', '#37c342');
       rangeElement.style.setProperty('--progress-value', `'${progressValue}%'`);

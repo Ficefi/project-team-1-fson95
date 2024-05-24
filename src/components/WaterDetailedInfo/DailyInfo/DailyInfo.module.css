@@ -50,6 +50,7 @@
   color: var(--main);
 }
 
+
 .icon_add_water_btn {
   width: 30px;
   height: 30px;
@@ -97,7 +98,7 @@
   background-color: var(--main);
 }
 
-.scroller>div {
+.scroller > div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -111,10 +112,14 @@
     width: 100%;
   }
 
+
+
   .daily_info_container {
     max-width: 100%;
   }
 }
+
+
 
 /* стає адаптивною з 375 px;*/
 @media only screen and (min-width: 376px) and (max-width: 768px) {
@@ -138,6 +143,8 @@
     max-width: 704px;
   }
 
+
+
   .daily_info_container {
     width: 100%;
     max-width: 640px;
@@ -150,4 +157,6 @@
     width: 100%;
     max-width: 672px;
   }
+
 }
+

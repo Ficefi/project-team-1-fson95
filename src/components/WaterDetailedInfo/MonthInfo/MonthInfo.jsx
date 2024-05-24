@@ -21,6 +21,36 @@ const MonthInfo = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [activeDate, setActiveDate] = useState(new Date());
 
+  const [waterRate, setWaterRate] = useState('');
+  const state = useSelector((state) => state);
+  const token = getPersistedToken(state);
+
+  useEffect(() => {
+    const fetchWaterRate = async () => {
+      try {
+        const response = await fetch(
+          'https://aquatrack-api.onrender.com/users/current',
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setWaterRate(data.waterRate);
+      } catch (error) {
+        console.error('Error fetching water rate:', error);
+      }
+    };
+
+    fetchWaterRate();
+  }, []);
+
+  let watered = calculateDailyWater(waterRate, waters);
+
   const getHeader = () => {
     return (
       <div>
@@ -46,6 +76,11 @@ const MonthInfo = () => {
         week.push(
           <div key={cloneDate.toString()}>
             <button
+              style={
+                watered === 100 ? { background: 'rgba(50, 63, 71, 0.2)' } : {}
+              }
+              // || waterRate > 100 ? {background: "#9BE1A0"} : {}
+
               className={clsx(css.btnday, {
                 [css.selectedDate]: isSameDay(currentDate, selectedDate),
               })}
@@ -57,7 +92,7 @@ const MonthInfo = () => {
                 ? format(currentDate, 'd')
                 : ''}
             </button>
-            <p className={css.completed}>100%</p>
+            <p className={css.completed}>{waterRate !== 0 ? watered : 0}%</p>
           </div>
         );
       }
@@ -90,39 +125,6 @@ const MonthInfo = () => {
       </>
     );
   };
-
-  const [waterRate, setWaterRate] = useState('');
-  const state = useSelector((state) => state);
-  const token = getPersistedToken(state);
-
-  useEffect(() => {
-    const fetchWaterRate = async () => {
-      try {
-        const response = await fetch(
-          'https://aquatrack-api.onrender.com/users/current',
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        setWaterRate(data.waterRate);
-      } catch (error) {
-        console.error('Error fetching water rate:', error);
-      }
-    };
-
-    fetchWaterRate();
-  }, []);
-
-  console.log(waterRate);
-
-  const water = useSelector((state) => state);
-  console.log(water);
 
   return (
     <div className={css.section}>

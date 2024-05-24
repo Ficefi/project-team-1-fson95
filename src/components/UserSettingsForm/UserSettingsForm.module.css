@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0bcdcdfbce0c074f45566f9646ff14659edc975d
 .wraperFormGroup {
   position: relative;
   display: flex;
@@ -16,11 +20,15 @@
     max-width: 568px;
   }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0bcdcdfbce0c074f45566f9646ff14659edc975d
 @media only screen and (min-width: 1440px) {
   .formGroup {
     max-width: 840px;
   }
+<<<<<<< HEAD
 
   .mainGrop {
     display: flex;
@@ -28,6 +36,13 @@
   }
 }
 
+=======
+  .mainGrop{
+     display: flex;
+     gap: 40px;
+  }
+}
+>>>>>>> 0bcdcdfbce0c074f45566f9646ff14659edc975d
 .accentLabel {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
@@ -45,13 +60,19 @@
     line-height: 1.33333;
   }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0bcdcdfbce0c074f45566f9646ff14659edc975d
 @media only screen and (min-width: 1440px) {
   .accentLabel {
     margin-bottom: 2px;
   }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0bcdcdfbce0c074f45566f9646ff14659edc975d
 .avatarContainer {
   display: flex;
   align-items: center;
@@ -87,6 +108,7 @@
   max-width: 303px;
   height: 46px;
 }
+<<<<<<< HEAD
 
 @media only screen and (min-width: 768px) {
   .input {
@@ -99,6 +121,18 @@
   .input {
     max-width: 400px;
     height: 56px;
+=======
+@media only screen and (min-width: 768px) {
+  .input {
+    max-width: 568px;
+  height: 56px;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .input {
+    max-width: 400px;
+  height: 56px;
+>>>>>>> 0bcdcdfbce0c074f45566f9646ff14659edc975d
   }
 }
 
@@ -182,14 +216,22 @@ input[type='radio'] {
   display: none;
 }
 
+<<<<<<< HEAD
 input[type='radio']+label {
+=======
+input[type='radio'] + label {
+>>>>>>> 0bcdcdfbce0c074f45566f9646ff14659edc975d
   display: inline-flex;
   cursor: pointer;
   padding-left: 25px;
   position: relative;
 }
 
+<<<<<<< HEAD
 input[type='radio']+label:before {
+=======
+input[type='radio'] + label:before {
+>>>>>>> 0bcdcdfbce0c074f45566f9646ff14659edc975d
   content: '';
   display: inline-block;
   width: 20px;
@@ -203,7 +245,11 @@ input[type='radio']+label:before {
   transform: translateY(-50%);
 }
 
+<<<<<<< HEAD
 input[type='radio']+label:after {
+=======
+input[type='radio'] + label:after {
+>>>>>>> 0bcdcdfbce0c074f45566f9646ff14659edc975d
   content: '';
   width: 10px;
   height: 10px;
@@ -215,7 +261,11 @@ input[type='radio']+label:after {
   display: none;
 }
 
+<<<<<<< HEAD
 input[type='radio']:checked+label:after {
+=======
+input[type='radio']:checked + label:after {
+>>>>>>> 0bcdcdfbce0c074f45566f9646ff14659edc975d
   display: block;
 }
 
@@ -225,6 +275,7 @@ input[type='radio']:checked+label:after {
   stroke: #000;
 }
 
+<<<<<<< HEAD
 .submitBtn {
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
@@ -243,13 +294,35 @@ input[type='radio']:checked+label:after {
   }
 }
 
+=======
+.submitBtn{
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+ padding: 14px 40px;
+ background-color: var(--light_green);
+ border-radius: 30px;
+ outline: none;
+ border: none;
+ cursor: pointer;
+}
+@media only screen and (min-width: 768px) {
+  .submitBtn {
+    font-size: 16px;
+   }
+}
+>>>>>>> 0bcdcdfbce0c074f45566f9646ff14659edc975d
 @media only screen and (min-width: 1440px) {
   .submitBtn {
     font-size: 16px;
   }
 }
 
+<<<<<<< HEAD
 .submitBtn:hover {
+=======
+.submitBtn:hover{
+>>>>>>> 0bcdcdfbce0c074f45566f9646ff14659edc975d
   background-color: #87d28d;
 }
 
@@ -276,6 +349,7 @@ input[type='radio']:checked+label:after {
   cursor: pointer;
 }
 
+<<<<<<< HEAD
 .formRatio {
   display: flex;
   gap: 20px;
@@ -285,17 +359,34 @@ input[type='radio']:checked+label:after {
   font-size: 14px;
 }
 
+=======
+.formRatio{
+  display:flex;
+  gap:20px;
+}
+
+.info{
+  font-size: 14px;
+}
+>>>>>>> 0bcdcdfbce0c074f45566f9646ff14659edc975d
 @media only screen and (min-width: 768px) {
   .info {
     font-size: 16px;
   }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0bcdcdfbce0c074f45566f9646ff14659edc975d
 @media only screen and (min-width: 1440px) {
   .info {
     font-size: 16px;
   }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 0bcdcdfbce0c074f45566f9646ff14659edc975d
 }
 
 
@@ -308,8 +399,12 @@ input[type='radio']:checked+label:after {
   color: red;
   max-width: 303px;
   position: absolute;
+<<<<<<< HEAD
   top: 100%;
   /* або інше значення, залежно від позиції */
+=======
+  top: 100%; /* або інше значення, залежно від позиції */
+>>>>>>> 0bcdcdfbce0c074f45566f9646ff14659edc975d
   left: 0;
 }
 
@@ -318,7 +413,10 @@ input[type='radio']:checked+label:after {
     max-width: 568px;
   }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0bcdcdfbce0c074f45566f9646ff14659edc975d
 @media only screen and (min-width: 1440px) {
   .error {
     max-width: 400px;

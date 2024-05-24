@@ -40,6 +40,7 @@
   cursor: pointer;
 }
 
+
 @media (min-width: 768px) {
   .btn_container {
     flex-direction: row;
@@ -53,3 +54,4 @@
     height: 46px;
   }
 }
+

@@ -72,8 +72,10 @@ export const getCurrentInfo = createAsyncThunk(
   'auth/current',
   async (_, thunkAPI) => {
     try {
-      const user = await axios.get('users/current');
-      return user;
+
+      const response = await axios.get('/users/current');
+      return response.data;
+
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -110,7 +112,6 @@ export const refreshUser = createAsyncThunk(
 
 export const getPersistedToken = (state) => state.auth.token;
 
-
 export const updateUserSettings = createAsyncThunk(
   'auth/updateSettings',
   async (values, thunkAPI) => {
@@ -124,4 +125,6 @@ export const updateUserSettings = createAsyncThunk(
       return thunkAPI.rejectWithValue(error.message);
     }
   }
+
 );
+
